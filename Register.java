@@ -16,7 +16,7 @@ public class Register {
     public void RegisterSubject(Student student,Subject subject){
         boolean Check = CheckRegistered(student, subject);
         if (Check==false) {
-            student.setSubjectThatRegistered(subject);
+            student.RegisterSubject(subject);
         }
     }
 }
