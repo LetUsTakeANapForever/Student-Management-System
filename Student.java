@@ -9,7 +9,6 @@ public class Student  {
         setStdPassWord(password);        
         setStdName(firstname);
         setStdLastname(lastname);
-        this.SubjectThatRegistered = new SubjectThatRegistered[10];
     }
     public Subject[] getAllSubjectThatRegistered() {
             return SubjectThatRegistered;
