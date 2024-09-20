@@ -20,9 +20,6 @@ public class Student  {
     public void subjectThatRegistered(Register subjectThatRegistered) {
             SubjectThatRegistered[index++] = subject;
         }
-    public Subject(String subjectID, String subjectName){
-        
-    }
     public void setStdID(String id){
         this.StudId = id;
     }
