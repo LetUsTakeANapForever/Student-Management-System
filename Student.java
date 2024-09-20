@@ -19,6 +19,7 @@ public class Student  {
         setPassWord(password);        
         setStudName(name);
         setStudLastname(lastname);
+        this.SubjectThatRegistered = new SubjectThatRegistered[10];
     }
     public void setStudID(String id){
         this.StudId = id;
