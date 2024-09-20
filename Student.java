@@ -1,48 +1,50 @@
 public class Student  {
-    private String Stud_name;
-    private String Stud_lastname;
-    private String StudId;
-    private String Password;
-    private Subject[] SubjectThatRegistered;
-    private int index=0;
-        public Subject[] getAllSubjectThatRegistered() {
-            return SubjectThatRegistered;
-        }
-        public Subject getSubjectThatRegistered(int index) {
-            return SubjectThatRegistered[index];
-        }
-        public void RegisterSubject(Subject subject) {
-            SubjectThatRegistered[index++] = subject;
-        }
-    public Student(String id,String password,String name,String lastname){
-        setStudID(id);
-        setPassWord(password);        
-        setStudName(name);
-        setStudLastname(lastname);
+    private String stdFirstName;
+    private String stdLastName;
+    private String stdID;
+    private String stdPassword;
+    private Subject[] subjectThatRegistered;
+      public Student(String id,String password,String firstname,String lastname){
+        setStdID(id);
+        setStdPassWord(password);        
+        setStdName(firstname);
+        setStdLastname(lastname);
         this.SubjectThatRegistered = new SubjectThatRegistered[10];
     }
-    public void setStudID(String id){
+    public Subject[] getAllSubjectThatRegistered() {
+            return SubjectThatRegistered;
+        }
+    public Subject getSubjectThatRegistered(int index) {
+            return SubjectThatRegistered[index];
+        }
+    public void subjectThatRegistered(Register subjectThatRegistered) {
+            SubjectThatRegistered[index++] = subject;
+        }
+    public Subject(String subjectID, String subjectName){
+        
+    }
+    public void setStdID(String id){
         this.StudId = id;
     }
-    public String getStudID(){
-        return this.StudId;
+    public String getStdID(){
+        return this.stdId;
     }
-    public void setPassWord(String password){
+    public void setStdPassWord(String password){
         this.Password = password;
     }
-    public String getPassWord(){
+    public String getStdPassWord(){
         return this.Password;
     }
-    public void setStudName(String name){
+    public void setStdFirstName(String name){
         this.Stud_name = name;
     }
-    public String getStudName(){
+    public String getStdFirstName(){
         return this.Stud_name;
     }
-    public void setStudLastname(String lastname){
+    public void setStdLastname(String lastname){
         this.Stud_lastname = lastname;
     }
-    public String getStudLastname(){
+    public String getStdLastname(){
         return this.Stud_lastname;
     }
 }
