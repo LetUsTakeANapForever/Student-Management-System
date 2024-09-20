@@ -1,46 +1,60 @@
-public class Student  {
+public class Student {
     private String stdFirstName;
     private String stdLastName;
     private String stdID;
     private String stdPassword;
-    private Subject[] subjectThatRegistered;
-      public Student(String id,String password,String firstname,String lastname){
+    private Register subjectThatRegistered;
+
+    public Student(String id, String password, String firstname, String lastname, Register regisSystem) {
         setStdID(id);
-        setStdPassWord(password);        
-        setStdName(firstname);
-        setStdLastname(lastname);
+        setStdPassword(password);
+        setStdFirstName(firstname);
+        setStdLastName(lastname);
+        setRegisterSystem(regisSystem);
     }
+
+    public void setRegisterSystem(Register subjectThatRegistered) {
+        this.subjectThatRegistered = subjectThatRegistered;
+    }
+
     public Subject[] getAllSubjectThatRegistered() {
-            return SubjectThatRegistered;
-        }
-    public Subject getSubjectThatRegistered(int index) {
-            return SubjectThatRegistered[index];
-        }
-    public void subjectThatRegistered(Register subjectThatRegistered) {
-            SubjectThatRegistered[index++] = subject;
-        }
-    public void setStdID(String id){
-        this.StudId = id;
+        return subjectThatRegistered.getAllSubjects();
     }
-    public String getStdID(){
-        return this.stdId;
+
+    public Subject getSubjectThatRegisteredAt(int index) {
+        return subjectThatRegistered.getSubjectAt(index);
     }
-    public void setStdPassWord(String password){
-        this.Password = password;
+
+    public String getStdFirstName() {
+        return stdFirstName;
     }
-    public String getStdPassWord(){
-        return this.Password;
+
+    public void setStdFirstName(String stdFirstName) {
+        this.stdFirstName = stdFirstName;
     }
-    public void setStdFirstName(String name){
-        this.Stud_name = name;
+
+    public String getStdLastName() {
+        return stdLastName;
     }
-    public String getStdFirstName(){
-        return this.Stud_name;
+
+    public void setStdLastName(String stdLastName) {
+        this.stdLastName = stdLastName;
     }
-    public void setStdLastname(String lastname){
-        this.Stud_lastname = lastname;
+
+    public String getStdID() {
+        return stdID;
     }
-    public String getStdLastname(){
-        return this.Stud_lastname;
+
+    public void setStdID(String stdID) {
+        this.stdID = stdID;
     }
+
+    public String getStdPassword() {
+        return stdPassword;
+    }
+
+    public void setStdPassword(String stdPassword) {
+        this.stdPassword = stdPassword;
+    }
+
 }
