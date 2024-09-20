@@ -14,11 +14,11 @@ public class Student  {
         public void RegisterSubject(Subject subject) {
             SubjectThatRegistered[index++] = subject;
         }
-    public Student(String id,String pw,String n,String ln){
+    public Student(String id,String password,String name,String lastname){
         setStudID(id);
-        setPassWord(pw);        
-        setStudName(n);
-        setStudLastname(ln);
+        setPassWord(password);        
+        setStudName(name);
+        setStudLastname(lastname);
     }
     public void setStudID(String id){
         this.StudId = id;
@@ -26,20 +26,20 @@ public class Student  {
     public String getStudID(){
         return this.StudId;
     }
-    public void setPassWord(String pw){
-        this.Password = pw;
+    public void setPassWord(String password){
+        this.Password = password;
     }
     public String getPassWord(){
         return this.Password;
     }
-    public void setStudName(String n){
-        this.Stud_name = n;
+    public void setStudName(String name){
+        this.Stud_name = name;
     }
     public String getStudName(){
         return this.Stud_name;
     }
-    public void setStudLastname(String ln){
-        this.Stud_lastname = ln;
+    public void setStudLastname(String lastname){
+        this.Stud_lastname = lastname;
     }
     public String getStudLastname(){
         return this.Stud_lastname;
