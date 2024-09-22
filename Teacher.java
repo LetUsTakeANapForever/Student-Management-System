@@ -4,22 +4,22 @@ public class Teacher {
     private String lastname;
     private String ID;
     private String password;
-    private Subject subject;
+    private Subject teachingSubject;
 
     public Teacher(String ID, String password, String firstname, String lastname, Subject subject) {
         setFirstname(firstname);
         setLastname(lastname);
         setID(ID);
         setPassword(password);
-        setSubject(subject);
+        setTeachingSubject(subject);
     }
 
-    public Subject getSubject() {
-        return subject;
+    public Subject getTeachingSubject() {
+        return teachingSubject;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setTeachingSubject(Subject teachingSubject) {
+        this.teachingSubject = teachingSubject;
     }
 
     public String getFirstname() {
@@ -55,10 +55,26 @@ public class Teacher {
     }
 
     public void summitGrade(Student std, Subject subject, String grade) {
-        for (int i = 0; i < std.getAllSubjectThatRegistered().length; i++){
-            if (std.getSubjectThatRegisteredAt(i) == null) break;
-            if (std.getSubjectThatRegisteredAt(i).equals(subject))
-                std.getSubjectThatRegisteredAt(i).setGrade(grade);
+        boolean isTeached = checkTeacingSubject(subject);
+        if (isTeached)
+            for (int i = 0; i < std.getAllSubjectThatRegistered().length; i++) {
+                if (std.getSubjectThatRegisteredAt(i) == null)
+                    break;
+                if (std.getSubjectThatRegisteredAt(i).equals(subject)) {
+                    std.getSubjectThatRegisteredAt(i).setGrade(grade);
+                    return;
+                }
+            }
+        System.out.printf("%s hasn't registered %s %s\n", std.getStdFirstName(), subject.getSubjectID(),
+                subject.getSubjectName());
+    }
+
+    public boolean checkTeacingSubject(Subject subject) {
+        if (subject.equals(getTeachingSubject()))
+            return true;
+        else {
+            System.out.printf("%s doesn't teach %s %s\n", getID(), subject.getSubjectID(), subject.getSubjectName());
+            return false;
         }
     }
 }
