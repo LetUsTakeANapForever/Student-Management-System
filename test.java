@@ -20,4 +20,7 @@ public class test{
     public void setName(String name) {
         this.name = name;
     }
+    public String JDBCToString() {
+        return String.format("(\"%s\", \"%s\")", getName(), getColor());
+    }  
 }

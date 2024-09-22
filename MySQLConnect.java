@@ -8,7 +8,7 @@ public class MySQLConnect {
     
     private static Connection connection;
     public static Connection getConnection() {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/student_management";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/test2";
         String username = "root";
         String password = "";
 
