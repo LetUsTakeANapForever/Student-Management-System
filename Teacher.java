@@ -4,22 +4,29 @@ public class Teacher {
     private String lastname;
     private String ID;
     private String password;
-    private Subject teachingSubject;
+    private Subject[] teachingSubject;
+    private final static int MAX_SUBJECT_PER_TERM = 5;
+    private int index;
 
-    public Teacher(String ID, String password, String firstname, String lastname, Subject subject) {
+    public Teacher(String ID, String password, String firstname, String lastname) {
         setFirstname(firstname);
         setLastname(lastname);
         setID(ID);
         setPassword(password);
-        setTeachingSubject(subject);
+        teachingSubject = new Subject[MAX_SUBJECT_PER_TERM];
     }
 
-    public Subject getTeachingSubject() {
+    public Subject[] getAllTeachingSubject() {
         return teachingSubject;
     }
 
-    public void setTeachingSubject(Subject teachingSubject) {
-        this.teachingSubject = teachingSubject;
+    public Subject getTeachingSubjectAt(int index) {
+        return teachingSubject[index];
+    }
+
+    public void addTeachingSubject(Subject subject) {
+        this.teachingSubject[index++] = subject;
+        System.out.printf("%s %s %s is successfully assigned to teach %s\n", getID(), getFirstname(), getLastname(), subject.getSubjectName());
     }
 
     public String getFirstname() {
@@ -54,9 +61,9 @@ public class Teacher {
         this.password = password;
     }
 
-    public void summitGrade(Student std, Subject subject, String grade) {
+    public void submitGrade(Student std, Subject subject, String grade) {
         boolean isTeached = checkTeacingSubject(subject);
-        if (isTeached)
+        if (isTeached){
             for (int i = 0; i < std.getAllSubjectThatRegistered().length; i++) {
                 if (std.getSubjectThatRegisteredAt(i) == null)
                     break;
@@ -64,17 +71,18 @@ public class Teacher {
                     std.getSubjectThatRegisteredAt(i).setGrade(grade);
                     return;
                 }
-            }
-        System.out.printf("%s hasn't registered %s %s\n", std.getStdFirstName(), subject.getSubjectID(),
+            }System.out.printf("%s hasn't registered %s %s\n", std.getStdFirstName(), subject.getSubjectID(),
                 subject.getSubjectName());
+        }
     }
 
     public boolean checkTeacingSubject(Subject subject) {
-        if (subject.equals(getTeachingSubject()))
-            return true;
-        else {
-            System.out.printf("%s doesn't teach %s %s\n", getID(), subject.getSubjectID(), subject.getSubjectName());
-            return false;
+        for (int i = 0; i < getAllTeachingSubject().length; i++){
+            if (getTeachingSubjectAt(i) == null) break;
+            if (subject.equals(getTeachingSubjectAt(i)))
+                return true;
         }
+        System.out.printf("%s doesn't teach %s %s\n", getID(), subject.getSubjectID(), subject.getSubjectName());
+        return false;
     }
 }
