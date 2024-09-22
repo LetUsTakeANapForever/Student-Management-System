@@ -13,7 +13,7 @@ public class testStoringData {
         Connection connection = MySQLConnect.getConnection();   
         try{
             Statement statement = connection.createStatement();
-            String query = "INSERT INTO aliens(alien_name, alien_color) VALUES " + t.JDBCToString() + ";";
+            String query = "INSERT INTO aliens(alien_name, alien_color)VALUES " + t.JDBCToString() + ";";
             System.out.println(query);
             statement.executeUpdate(query);
             System.out.println("Succeeded");
