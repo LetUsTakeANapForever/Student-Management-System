@@ -60,6 +60,9 @@ public class Student {
     public void setStdPassword(String stdPassword) {
         this.stdPassword = stdPassword;
     }
+    public void ShowAllHomework(Subject subject){
+        subject.showHomework();
+    }
 
     private class Register {
         private Subject[] subjects;
