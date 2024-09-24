@@ -60,6 +60,9 @@ public class Teacher {
     public void setPassword(String password) {
         this.password = password;
     }
+    public void addHomework(Subject subject,Homework homework){
+        subject.addHomework(homework);
+    }
 
     public void submitGrade(Student std, Subject subject, String grade) {
         boolean isTeached = checkTeacingSubject(subject);
