@@ -1,11 +1,13 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 public class Subject {
     private String Subject_ID;
     private String Subject_Name;
     private String grade;
     private List<Homework> homeworks = new ArrayList<>();
+    private LocalDateTime deadline;
     public Subject(String Subject_ID, String Subject_Name) {
         setSubjectID(Subject_ID);
         setSubjectName(Subject_Name);
@@ -52,7 +54,7 @@ public class Subject {
 
         // เพิ่ม default Constructor  Homework(String detail) แล้ว setDetail ข้างใน
         
-        public Homework(String detail){
+        public Homework(String detail,/*LocalDateLine deadline*/){
             setDetail(detail);
         }
         public String getDetail() {
