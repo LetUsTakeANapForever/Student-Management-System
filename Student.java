@@ -58,8 +58,8 @@ public class Student {
     public List<String> ShowAllHomework(Subject subject){ // แก้ return type จาก void เป็น List<String>, parameter เป็น Subject ถูกแล้ว
         // ข้างใน
         List<String> hwDetail = new ArrayList<>();// 1. สร้าง list เก็บ String hwDetail
-        for(int i=0;i<subject.length;i++){// 2. วนลูป ดึงเอาดีเทลการบ้าน i มา add ลง hwDeatail
-            hwDetail.add(subject.get(i).getDetail);
+        for(int i=0;i<subject.;i++){// 2. วนลูป ดึงเอาดีเทลการบ้าน i มา add ลง hwDeatail
+            hwDetail.add(subject.showHomeworkDetailAt(i));
         }
         return hwDetail;// 3. หลังวนลูปเสร็จ return hwDetail ที่เป็นข้อมูลชนิด List
          // ลบบรรทัดนี้ออก
