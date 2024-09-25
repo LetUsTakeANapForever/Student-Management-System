@@ -35,25 +35,31 @@ public class Subject {
     public String getGrade() {
         return grade;
     }
-    public void addHomework(Homework homework){ // parameter เป็น String detail
-        // ตรงนี้ต้องสร้างวัตถุคลาสการบ้านขึ้นมาแล้วส่งค่า detail ที่รับparameterมาใส่ตอนสร้างทันที
-        homeworks.add(homework); // บรรทัดนี้ .add(ชื่อตัวแปรวัตถุการบ้านเมื่อกี้)
+    public void addHomework(String detail){ // parameter เป็น String detail
+        Homework homework = new Homework(detail)// ตรงนี้ต้องสร้างวัตถุคลาสการบ้านขึ้นมาแล้วส่งค่า detail ที่รับparameterมาใส่ตอนสร้างทันที
+        homeworks.add(homework);// บรรทัดนี้ .add(ชื่อตัวแปรวัตถุการบ้านเมื่อกี้)
     }
-    public ArrayList showHomework(){ // return type ควรเป็น List<Homework>
+    public List<Homework> showHomework(){ // return type ควรเป็น List<Homework>
         return homeworks;
     }
 
     // เพิ่ม method 
     // showHomeworkDetailAt(index, int) : String
     // ตรง return ให้เป็น ดึงค่า homeworks ที่เป็น list มา get ตาม index แล้วดึง detail ของแต่ละการบ้านออกมา 
+    public String showHomeworkDetailAt(int index){
+        return homeworks.get(index).getDetail();
+    }
      
     private class Homework{
         private LocalDateTime deadline;
         private String Detail;
 
         // เพิ่ม default Constructor  Homework(String detail) แล้ว setDetail ข้างใน
+        public Homework(String detail){
+            setDetail(detail);
+        }
         
-        public Homework(String detail,/*LocalDateLine deadline*/){
+        public Homework(String detail,LocalDateLine deadline){
             setDetail(detail);
             setDeadline(deadline);
         }
