@@ -16,20 +16,12 @@ public class Student {
         subjectThatRegistered = new Register();
     }
 
-    public void setRegisterSystem(Register subjectThatRegistered) { // ลบทิ้ง
-        this.subjectThatRegistered = subjectThatRegistered;
-    }
-
     public void register(Subject subject) {
-        subjectThatRegistered.RegisterSubject(this, subject);; // argument มีแค่ subject อย่างเดียว, ลบ this ออก
+        subjectThatRegistered.RegisterSubject(subject);; // argument มีแค่ subject อย่างเดียว, ลบ this ออก
     }
 
-    public Subject[] getAllSubjectThatRegistered() { // return type แก้เป็น List<Subject>
-        return subjectThatRegistered.getAllSubjects(); // บรรทัดนี้ return subjectsThatRegistered.subjects;
-    }
-
-    public Subject getSubjectThatRegisteredAt(int index) { // ลบทิ้ง
-        return subjectThatRegistered.getSubjectAt(index);
+    public List<Subject> getAllSubjectThatRegistered() { // return type แก้เป็น List<Subject>
+        return subjectThatRegistered.subjects(); // บรรทัดนี้ return subjectsThatRegistered.subjects;
     }
 
     public String getStdFirstName() {
@@ -63,12 +55,14 @@ public class Student {
     public void setStdPassword(String stdPassword) {
         this.stdPassword = stdPassword;
     }
-    public void ShowAllHomework(Subject subject){ // แก้ return type จาก void เป็น List<String>, parameter เป็น Subject ถูกแล้ว
+    public List<String> ShowAllHomework(Subject subject){ // แก้ return type จาก void เป็น List<String>, parameter เป็น Subject ถูกแล้ว
         // ข้างใน
-        // 1. สร้าง list เก็บ String hwDetail
-        // 2. วนลูป ดึงเอาดีเทลการบ้าน i มา add ลง hwDeatail
-        // 3. หลังวนลูปเสร็จ return hwDetail ที่เป็นข้อมูลชนิด List
-        subject.showHomework(); // ลบบรรทัดนี้ออก
+        List<String> hwDetail = new ArrayList<>();// 1. สร้าง list เก็บ String hwDetail
+        for(int i=0;i<subject.length;i++){// 2. วนลูป ดึงเอาดีเทลการบ้าน i มา add ลง hwDeatail
+            hwDetail.add(subject.get(i).getDetail);
+        }
+        return hwDetail;// 3. หลังวนลูปเสร็จ return hwDetail ที่เป็นข้อมูลชนิด List
+         // ลบบรรทัดนี้ออก
     }
 
     private class Register {
