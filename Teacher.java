@@ -56,14 +56,15 @@ public class Teacher {
         this.password = password;
     }
 
-    public void addHomework(Student std, Subject subject, String detail) {
+    public void addHomework(Student std, Subject subject, String detail, String deadline) {
         boolean isTeached = checkTeacingSubject(subject);
         if (isTeached) {
             for (int i = 0; i < std.getAllSubjectThatRegistered().size(); i++) {
                 if (std.getAllSubjectThatRegistered().get(i) == null)
                     break;
                 if (std.getAllSubjectThatRegistered().get(i).equals(subject)) {
-                    std.getAllSubjectThatRegistered().get(i).addHomework(detail);
+                    std.getAllSubjectThatRegistered().get(i).addHomework(detail, deadline);
+                    System.out.printf("%s assigned %s's homework to %s\n", getID(), std.getAllSubjectThatRegistered().get(i).getSubjectName(), std.getStdID());
                     return;
                 }
             }
@@ -80,6 +81,7 @@ public class Teacher {
                     break;
                 if (std.getAllSubjectThatRegistered().get(i).equals(subject)) {
                     std.getAllSubjectThatRegistered().get(i).setGrade(grade);
+                    System.out.printf("%s submitted %s's grade in %s\n", getID(), std.getStdID(), std.getAllSubjectThatRegistered().get(i).getSubjectName());
                     return;
                 }
             }

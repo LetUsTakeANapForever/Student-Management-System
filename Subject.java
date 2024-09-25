@@ -1,12 +1,14 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.*;;
 
 public class Subject {
     private String Subject_ID;
     private String Subject_Name;
     private String grade;
-    private List<Homework> homeworks = new ArrayList<>();
+    private List<Homework> homework = new ArrayList<>();
+
     public Subject(String Subject_ID, String Subject_Name) {
         setSubjectID(Subject_ID);
         setSubjectName(Subject_Name);
@@ -35,46 +37,50 @@ public class Subject {
     public String getGrade() {
         return grade;
     }
-    public void addHomework(String detail){ // parameter เป็น String detail
-        Homework homework = new Homework(detail)// ตรงนี้ต้องสร้างวัตถุคลาสการบ้านขึ้นมาแล้วส่งค่า detail ที่รับparameterมาใส่ตอนสร้างทันที
-        homeworks.add(homework);// บรรทัดนี้ .add(ชื่อตัวแปรวัตถุการบ้านเมื่อกี้)
-    }
-    public List<Homework> showHomework(){ // return type ควรเป็น List<Homework>
-        return homeworks;
+
+    public void addHomework(String detail, String deadline) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate deadlineDate = LocalDate.parse(deadline, formatter);
+        Homework hw = new Homework(detail, deadlineDate);
+        homework.add(hw);
     }
 
-    // เพิ่ม method 
-    // showHomeworkDetailAt(index, int) : String
-    // ตรง return ให้เป็น ดึงค่า homeworks ที่เป็น list มา get ตาม index แล้วดึง detail ของแต่ละการบ้านออกมา 
-    public String showHomeworkDetailAt(int index){
-        return homeworks.get(index).getDetail();
+    public List<Homework> showHomework() {
+        return homework;
     }
-     
-    private class Homework{
-        private LocalDateTime deadline;
+
+    public String showHomeworkDetailAt(int index) {
+        return homework.get(index).getDetail();
+    }
+
+    public LocalDate showHomeworkDeadLineAt(int index) {
+        return homework.get(index).getDeadline();
+    }
+
+    private class Homework {
+        private LocalDate deadline;
         private String Detail;
 
-        // เพิ่ม default Constructor  Homework(String detail) แล้ว setDetail ข้างใน
-        public Homework(String detail){
-            setDetail(detail);
-        }
-        
-        public Homework(String detail,LocalDateLine deadline){
+        public Homework(String detail, LocalDate deadline) {
             setDetail(detail);
             setDeadline(deadline);
         }
+
         public String getDetail() {
             return Detail;
         }
+
         public void setDetail(String detail) {
             Detail = detail;
         }
-        public LocalDateLine getDeadline(){
+
+        public LocalDate getDeadline() {
             return this.deadline;
         }
-        public void setDateline(LocalDateLine deadline){
+
+        public void setDeadline(LocalDate deadline) {
             this.deadline = deadline;
-        } 
+        }
     }
 
 }

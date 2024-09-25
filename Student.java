@@ -6,22 +6,22 @@ public class Student {
     private String stdLastName;
     private String stdID;
     private String stdPassword;
-    private Register subjectThatRegistered;
+    private Register subjectsThatRegistered;
 
     public Student(String id, String password, String firstname, String lastname) {
         setStdID(id);
         setStdPassword(password);
         setStdFirstName(firstname);
         setStdLastName(lastname);
-        subjectThatRegistered = new Register();
+        subjectsThatRegistered = new Register();
     }
 
     public void register(Subject subject) {
-        subjectThatRegistered.RegisterSubject(subject);; // argument มีแค่ subject อย่างเดียว, ลบ this ออก
+        subjectsThatRegistered.RegisterSubject(subject);
     }
 
-    public List<Subject> getAllSubjectThatRegistered() { // return type แก้เป็น List<Subject>
-        return subjectThatRegistered.subjects(); // บรรทัดนี้ return subjectsThatRegistered.subjects;
+    public List<Subject> getAllSubjectThatRegistered() {
+        return subjectsThatRegistered.subjects;
     }
 
     public String getStdFirstName() {
@@ -55,14 +55,13 @@ public class Student {
     public void setStdPassword(String stdPassword) {
         this.stdPassword = stdPassword;
     }
-    public List<String> ShowAllHomework(Subject subject){ // แก้ return type จาก void เป็น List<String>, parameter เป็น Subject ถูกแล้ว
-        // ข้างใน
-        List<String> hwDetail = new ArrayList<>();// 1. สร้าง list เก็บ String hwDetail
-        for(int i=0;i<subject.showHomework().size();i++){// 2. วนลูป ดึงเอาดีเทลการบ้าน i มา add ลง hwDeatail
-            hwDetail.add(subject.showHomeworkDetailAt(i));
+
+    public List<String> ShowAllHomework(Subject subject) {
+        List<String> hwList = new ArrayList<>();
+        for (int i = 0; i < subject.showHomework().size(); i++) {
+            hwList.add(subject.showHomeworkDetailAt(i) + " " + subject.showHomeworkDeadLineAt(i));
         }
-        return hwDetail;// 3. หลังวนลูปเสร็จ return hwDetail ที่เป็นข้อมูลชนิด List
-         // ลบบรรทัดนี้ออก
+        return hwList;
     }
 
     private class Register {
