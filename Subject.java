@@ -7,7 +7,6 @@ public class Subject {
     private String Subject_Name;
     private String grade;
     private List<Homework> homeworks = new ArrayList<>();
-    private LocalDateTime deadline;
     public Subject(String Subject_ID, String Subject_Name) {
         setSubjectID(Subject_ID);
         setSubjectName(Subject_Name);
@@ -49,13 +48,14 @@ public class Subject {
     // ตรง return ให้เป็น ดึงค่า homeworks ที่เป็น list มา get ตาม index แล้วดึง detail ของแต่ละการบ้านออกมา 
      
     private class Homework{
-        //DeadLine:LocalDateTime
+        private LocalDateTime deadline;
         private String Detail;
 
         // เพิ่ม default Constructor  Homework(String detail) แล้ว setDetail ข้างใน
         
         public Homework(String detail,/*LocalDateLine deadline*/){
             setDetail(detail);
+            setDeadline(deadline);
         }
         public String getDetail() {
             return Detail;
@@ -63,6 +63,12 @@ public class Subject {
         public void setDetail(String detail) {
             Detail = detail;
         }
+        public LocalDateLine getDeadline(){
+            return this.deadline;
+        }
+        public void setDateline(LocalDateLine deadline){
+            this.deadline = deadline;
+        } 
     }
 
 }
