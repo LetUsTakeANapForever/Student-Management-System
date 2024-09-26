@@ -78,11 +78,11 @@ public class testRegisterSubject {
                 ResultSet rs = statement.executeQuery("SELECT * FROM " + tableName);
                 while(rs.next()) {
                     String std_id = rs.getString("std_id");
-                    String std_firstname = rs.getString("std_firstname");
-                    String std_lastname = rs.getString("std_lastname");
+                    // String std_firstname = rs.getString("std_firstname");
+                    // String std_lastname = rs.getString("std_lastname");
                     String grade = rs.getString("grade");
                     
-                    System.out.printf("%s %s %s %s\n", std_id, std_firstname, std_lastname, grade);
+                    System.out.printf("%s %s %s %s\n", std_id, grade); //std_firstname, std_lastname,
                 }   
             }catch (SQLException e){
                 e.printStackTrace();
