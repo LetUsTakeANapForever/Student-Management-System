@@ -15,6 +15,7 @@ public class testRegisterSubject {
         System.out.println("2.add registered student");
         System.out.println("3.display data");
         System.out.println("4.add all registered students");
+        System.out.println("5.add a subject to system");
     }
 
     public static void createTable(String tableName) {
@@ -22,7 +23,7 @@ public class testRegisterSubject {
         try {
             Statement statement = connection.createStatement();
             String query = String.format(
-                    "CREATE TABLE IF NOT EXISTS %s (std_id VARCHAR(15), std_firstname VARCHAR(30), std_lastname VARCHAR(30), grade CHAR(1));",
+                    "CREATE TABLE IF NOT EXISTS %s (std_id VARCHAR(15), grade CHAR(1));",
                     tableName);
             statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -33,19 +34,15 @@ public class testRegisterSubject {
     public static void addStudent(String tableName) {
         System.out.print("std_id : ");
         String std_id = sc.nextLine();
-        System.out.print("std_firstname : ");
-        String std_firstname = sc.nextLine();
-        System.out.print("std_lastname : ");
-        String std_lastname = sc.nextLine();
 
-        if (!doesExist(std_id, std_firstname, std_lastname)) return;
+        if (!doesExist(std_id)) return;
 
         Connection connection = MySQLConnect.getConnection();
         try {
             Statement statement = connection.createStatement();
             String query = String.format(
-                    "INSERT INTO %s(std_id, std_firstname, std_lastname) VALUES(\"%s\", \"%s\", \"%s\");", tableName,
-                    std_id, std_firstname, std_lastname);
+                    "INSERT INTO %s(std_id) VALUES(\"%s\");", tableName,
+                    std_id);
             statement.executeUpdate(query);
             System.out.println("Added");
         } catch (SQLException e) {
@@ -53,17 +50,15 @@ public class testRegisterSubject {
         }
     }
 
-    public static boolean doesExist(String idInput, String firstName, String lastName){
+    public static boolean doesExist(String idInput){
             Connection connection = MySQLConnect.getConnection();
             try{
                 Statement statement = connection.createStatement();
                 ResultSet stdSet = statement.executeQuery("SELECT * FROM students");
                 while(stdSet.next()) {
                     String std_id = stdSet.getString("std_id");
-                    String std_firstname = stdSet.getString("std_firstname");
-                    String std_lastname = stdSet.getString("std_lastname");
                     
-                    if (std_id.equals(idInput) && std_firstname.equals(firstName) && std_lastname.equals(lastName)){
+                    if (std_id.equals(idInput)){
                         System.out.println("Exist : " + std_id);
                         return true;
                     }
@@ -76,7 +71,7 @@ public class testRegisterSubject {
             }
     }
 
-    public static void displayStudent(String tableName) {
+    public static void displayStudent(String tableName) { // USE JOIN CONCEPT
         Connection connection = MySQLConnect.getConnection();
             try{
                 Statement statement = connection.createStatement();
@@ -100,19 +95,17 @@ public class testRegisterSubject {
         try {
             Statement statement = connection.createStatement();
             
-            String fecthStudents = "SELECT * FROM students";
+            String fecthStudents = "SELECT std_id FROM students";
             ResultSet rs = statement.executeQuery(fecthStudents);
 
             while (rs.next()){
                 String id = rs.getString("std_id");
-                String firstName = rs.getString("std_firstname");
-                String lastName = rs.getString("std_lastname");
-                stdList.add(String.format("\"%s\", \"%s\", \"%s\"", id, firstName, lastName));
+                stdList.add(String.format("\"%s\"", id));
             }
 
             for (int i = 0; i < stdList.size(); i ++){
                     String insertionQuery = String.format(
-                    "INSERT INTO %s(std_id, std_firstname, std_lastname) VALUES(%s);", tableName,
+                    "INSERT INTO %s(std_id) VALUES(%s);", tableName,
                     stdList.get(i));
                     System.out.println(insertionQuery);
                     statement.executeUpdate(insertionQuery);
@@ -123,24 +116,48 @@ public class testRegisterSubject {
         }
     }
 
+    public static void addSubjectToSystem(String tableName){
+        System.out.print("subject_id : ");
+        String subeject_id = sc.nextLine();
+        System.out.print("subject_name : ");
+        String subject_name = sc.nextLine();
+        System.out.print("teacher_id : ");
+        String teacher_id = sc.nextLine();
+
+        Connection connection = MySQLConnect.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+
+            String query = String.format(
+                    "INSERT INTO %s(subject_id, subject_name, teacher_id) VALUES(\"%s\", \"%s\", \"%s\");", tableName,
+                    subeject_id, subject_name, teacher_id);
+            statement.executeUpdate(query);
+            System.out.println("Added");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         displayMenu();
         System.out.print("Choice : ");
         String choice = sc.nextLine();
         System.out.print("Input table name : ");
-        String subjectName = sc.nextLine();
+        String tableName = sc.nextLine();
 
         switch (choice) {
             case "1":
-                createTable(subjectName);
+                createTable(tableName);
                 break;
             case "2":
-                addStudent(subjectName);
+                addStudent(tableName);
                 break;
             case "3":
-                displayStudent(subjectName);break;
+                displayStudent(tableName);break;
             case "4":
-                addAllStudents(subjectName);break;
+                addAllStudents(tableName);break;
+            case "5" :
+                addSubjectToSystem(tableName);break;
             default:
                 System.out.println("Invalid chocie");
         }
