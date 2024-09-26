@@ -3,15 +3,18 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class testRegisterSubject {
     static Scanner sc = new Scanner(System.in);
 
     public static void displayMenu() {
         System.out.println("---Menu---");
-        System.out.println("1.add subject table");
+        System.out.println("1.create subject table");
         System.out.println("2.add registered student");
         System.out.println("3.display data");
+        System.out.println("4.add all registered students");
     }
 
     public static void createTable(String tableName) {
@@ -91,6 +94,35 @@ public class testRegisterSubject {
             }
     }
 
+    public static void addAllStudents(String tableName) {
+        List<String>stdList = new ArrayList<>();
+        Connection connection = MySQLConnect.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            
+            String fecthStudents = "SELECT * FROM students";
+            ResultSet rs = statement.executeQuery(fecthStudents);
+
+            while (rs.next()){
+                String id = rs.getString("std_id");
+                String firstName = rs.getString("std_firstname");
+                String lastName = rs.getString("std_lastname");
+                stdList.add(String.format("\"%s\", \"%s\", \"%s\"", id, firstName, lastName));
+            }
+
+            for (int i = 0; i < stdList.size(); i ++){
+                    String insertionQuery = String.format(
+                    "INSERT INTO %s(std_id, std_firstname, std_lastname) VALUES(%s);", tableName,
+                    stdList.get(i));
+                    System.out.println(insertionQuery);
+                    statement.executeUpdate(insertionQuery);
+                    System.out.println("Added " + (i + 1));
+                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         displayMenu();
         System.out.print("Choice : ");
@@ -107,6 +139,8 @@ public class testRegisterSubject {
                 break;
             case "3":
                 displayStudent(subjectName);break;
+            case "4":
+                addAllStudents(subjectName);break;
             default:
                 System.out.println("Invalid chocie");
         }
