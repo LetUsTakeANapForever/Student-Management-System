@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class testRegisterSubject {
     static Scanner sc = new Scanner(System.in);
+    static Connection connection = MySQLConnect.getConnection();
 
     public static void displayMenu() {
         System.out.println("---Menu---");
@@ -16,10 +17,10 @@ public class testRegisterSubject {
         System.out.println("3.display data from each subeject table");
         System.out.println("4.add all registered students");
         System.out.println("5.add a subject to system");
+        System.out.println("6.add a student to Registration table");
     }
 
     public static void createTable(String tableName) {
-        Connection connection = MySQLConnect.getConnection();
         try {
             Statement statement = connection.createStatement();
             String query = String.format(
@@ -51,17 +52,14 @@ public class testRegisterSubject {
     }
 
     public static boolean doesExist(String idInput){
-            Connection connection = MySQLConnect.getConnection();
             try{
                 Statement statement = connection.createStatement();
-                ResultSet stdSet = statement.executeQuery("SELECT * FROM students");
-                while(stdSet.next()) {
+                String qeury = String.format("SELECT * FROM students WHERE std_id = \"%s\"", idInput);
+                ResultSet stdSet = statement.executeQuery(qeury);
+                if(stdSet.next()) {
                     String std_id = stdSet.getString("std_id");
-                    
-                    if (std_id.equals(idInput)){
-                        System.out.println("Exist : " + std_id);
-                        return true;
-                    }
+                    System.out.println("Exist : " + std_id);
+                    return true;
                 }
                 System.out.println("Student doesn't exist in the system.");
                 return false;
@@ -72,7 +70,6 @@ public class testRegisterSubject {
     }
 
     public static void displayStudent(String tableName) { // USE JOIN CONCEPT
-        Connection connection = MySQLConnect.getConnection();
             try{
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM " + tableName);
@@ -91,7 +88,6 @@ public class testRegisterSubject {
 
     public static void addAllStudents(String tableName) {
         List<String>stdList = new ArrayList<>();
-        Connection connection = MySQLConnect.getConnection();
         try {
             Statement statement = connection.createStatement();
             
@@ -138,6 +134,23 @@ public class testRegisterSubject {
         }
     }
 
+    public static void registerStudent(String tableName) {
+        System.out.print("student_id : ");
+        String student_id = sc.nextLine();
+        System.out.print("subject_name : ");
+        String subject_id = sc.nextLine();
+
+        try {
+            Statement statement = connection.createStatement();
+            String query = String.format("INSERT INTO %s (std_id, subject_id) VALUES(\"%s\", \"%s\");", tableName, student_id, subject_id);
+            statement.executeUpdate(query);
+            System.out.println("Added");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
     public static void main(String[] args) {
         displayMenu();
         System.out.print("Choice : ");
@@ -158,6 +171,8 @@ public class testRegisterSubject {
                 addAllStudents(tableName);break;
             case "5" :
                 addSubjectToSystem(tableName);break;
+            case "6":
+                registerStudent(tableName);break;
             default:
                 System.out.println("Invalid chocie");
         }
