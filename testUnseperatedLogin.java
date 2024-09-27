@@ -1,5 +1,6 @@
 // Case that both teachers and students log in here
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class testUnseperatedLogin {
             String fetchTeacher = "SELECT * FROM teachers";
 
             ResultSet stdSet = statement.executeQuery(fetchStudent);
-            while(stdSet.next()) {
+            while(stdSet.next()) { // Uneffective but works somehow
                 String std_id = stdSet.getString("std_id");
                 String std_pass = stdSet.getString("std_password");
                 
