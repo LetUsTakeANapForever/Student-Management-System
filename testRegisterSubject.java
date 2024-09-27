@@ -13,7 +13,7 @@ public class testRegisterSubject {
         System.out.println("---Menu---");
         System.out.println("1.create subject table");
         System.out.println("2.add registered student");
-        System.out.println("3.display data");
+        System.out.println("3.display data from each subeject table");
         System.out.println("4.add all registered students");
         System.out.println("5.add a subject to system");
     }
@@ -82,7 +82,7 @@ public class testRegisterSubject {
                     // String std_lastname = rs.getString("std_lastname");
                     String grade = rs.getString("grade");
                     
-                    System.out.printf("%s %s %s %s\n", std_id, grade); //std_firstname, std_lastname,
+                    System.out.printf("%s %s\n", std_id, grade); //std_firstname, std_lastname,
                 }   
             }catch (SQLException e){
                 e.printStackTrace();
