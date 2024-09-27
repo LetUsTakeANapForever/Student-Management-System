@@ -1,4 +1,3 @@
-
 public class Teacher {
     private String firstname;
     private String lastname;
