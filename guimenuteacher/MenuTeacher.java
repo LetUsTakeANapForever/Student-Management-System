@@ -62,7 +62,7 @@ public class MenuTeacher extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -206,44 +206,44 @@ public class MenuTeacher extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {                                       
         
-    }//GEN-LAST:event_LogoutActionPerformed
+    }                                      
 
-    private void Edit_GradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_GradeActionPerformed
+    private void Edit_GradeActionPerformed(java.awt.event.ActionEvent evt) {                                           
         MenuGrade backgrade = new MenuGrade();
         backgrade.setVisible(true);
         backgrade.pack();
         backgrade.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_Edit_GradeActionPerformed
+    }                                          
 
-    private void Edit_HWorASSINGMENTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_HWorASSINGMENTSActionPerformed
+    private void Edit_HWorASSINGMENTSActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         Homework backHomework = new Homework();
         backHomework.setVisible(true);
         backHomework.pack();
         backHomework.setLocationRelativeTo(null);
         this.dispose();
         
-    }//GEN-LAST:event_Edit_HWorASSINGMENTSActionPerformed
+    }                                                    
 
-    private void IconGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IconGradeActionPerformed
+    private void IconGradeActionPerformed(java.awt.event.ActionEvent evt) {                                          
         MenuGrade backgrade = new MenuGrade();
         backgrade.setVisible(true);
         backgrade.pack();
         backgrade.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_IconGradeActionPerformed
+    }                                         
 
-    private void IconHomeWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IconHomeWorkActionPerformed
+    private void IconHomeWorkActionPerformed(java.awt.event.ActionEvent evt) {                                             
         Homework backHomework = new Homework();
         backHomework.setVisible(true);
         backHomework.pack();
         backHomework.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_IconHomeWorkActionPerformed
+    }                                            
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -262,7 +262,7 @@ public class MenuTeacher extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton Edit_Grade;
     private javax.swing.JButton Edit_HWorASSINGMENTS;
     private javax.swing.JButton IconGrade;
@@ -273,5 +273,5 @@ public class MenuTeacher extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
