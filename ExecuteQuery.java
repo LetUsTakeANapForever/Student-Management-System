@@ -11,12 +11,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class ExecuteQuery {
     public static void main(String[] args) {
+
+        
+        
         String jdbcUrl = "jdbc:mysql://localhost:3306/test";
         String username = "root";
         String password = "";
         
+        // or String connectionURL = "jdbc:mysql://localhost:3306/student-management?user=root&password=";
         try {
-            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password); // connectionURL as argument instead
             // The Statement interface is used to execute static SQL queries.
             Statement statement = connection.createStatement(); // Create a new Statement object for sending SQL statements to the database
             
