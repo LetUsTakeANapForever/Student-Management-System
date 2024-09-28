@@ -1,7 +1,4 @@
-package GUIgrade;
 
-import com.formdev.flatlaf.FlatLightLaf;
-import guimenuteacher.MenuTeacher;
 import java.awt.Color;
 import javax.swing.UIManager;
 
@@ -192,11 +189,7 @@ public class MenuGrade extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    UIManager.setLookAndFeel( new FlatLightLaf() );
-                } catch( Exception ex ) {
-                    System.err.println( "Failed to initialize LaF" );
-                }
+                
                 new MenuGrade().setVisible(true);
             }
         });
