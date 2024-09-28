@@ -25,13 +25,13 @@ public class MenuTeacher extends javax.swing.JFrame {
                 this.Logout.setFocusPainted(false);
                 this.Logout.setContentAreaFilled(false);
                 
-                this.Edit_Grade.setBorderPainted(false);
-                this.Edit_Grade.setFocusPainted(false);
-                this.Edit_Grade.setContentAreaFilled(false);
+                this.Submit_Grade.setBorderPainted(false);
+                this.Submit_Grade.setFocusPainted(false);
+                this.Submit_Grade.setContentAreaFilled(false);
                 
-                this.Edit_HWorASSINGMENTS.setBorderPainted(false);
-                this.Edit_HWorASSINGMENTS.setFocusPainted(false);
-                this.Edit_HWorASSINGMENTS.setContentAreaFilled(false);
+                this.Add_HW.setBorderPainted(false);
+                this.Add_HW.setFocusPainted(false);
+                this.Add_HW.setContentAreaFilled(false);
                 
                 this.IconGrade.setBorderPainted(false);
                 this.IconGrade.setFocusPainted(false);
@@ -43,6 +43,7 @@ public class MenuTeacher extends javax.swing.JFrame {
     }
     
     public void JSetimageIcon(){
+        
                 ImageIcon icon = new ImageIcon("C:/Users/G15/Pictures/2641409.png");
                 Image img = icon.getImage();
                 Image resizedImg = img.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
@@ -60,14 +61,12 @@ public class MenuTeacher extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Logout = new javax.swing.JButton();
         Name_Teacher = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Edit_Grade = new javax.swing.JButton();
-        Edit_HWorASSINGMENTS = new javax.swing.JButton();
+        Submit_Grade = new javax.swing.JButton();
+        Add_HW = new javax.swing.JButton();
         IconGrade = new javax.swing.JButton();
         IconHomeWork = new javax.swing.JButton();
 
@@ -129,23 +128,23 @@ public class MenuTeacher extends javax.swing.JFrame {
             .addGap(0, 29, Short.MAX_VALUE)
         );
 
-        Edit_Grade.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        Edit_Grade.setText("EDIT GRADE");
-        Edit_Grade.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Edit_Grade.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Edit_Grade.addActionListener(new java.awt.event.ActionListener() {
+        Submit_Grade.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        Submit_Grade.setText("SUBMIT GRADE");
+        Submit_Grade.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Submit_Grade.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Submit_Grade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Edit_GradeActionPerformed(evt);
+                Submit_GradeActionPerformed(evt);
             }
         });
 
-        Edit_HWorASSINGMENTS.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        Edit_HWorASSINGMENTS.setText("EDIT HW/ASSINGMENTS");
-        Edit_HWorASSINGMENTS.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Edit_HWorASSINGMENTS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Edit_HWorASSINGMENTS.addActionListener(new java.awt.event.ActionListener() {
+        Add_HW.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        Add_HW.setText("ADD HW/ASSINGMENTS");
+        Add_HW.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Add_HW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Add_HW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Edit_HWorASSINGMENTSActionPerformed(evt);
+                Add_HWActionPerformed(evt);
             }
         });
 
@@ -176,8 +175,8 @@ public class MenuTeacher extends javax.swing.JFrame {
                     .addComponent(IconHomeWork, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Edit_HWorASSINGMENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Edit_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Add_HW, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Submit_Grade))
                 .addGap(154, 154, 154))
         );
         layout.setVerticalGroup(
@@ -187,9 +186,9 @@ public class MenuTeacher extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(Edit_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Submit_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                        .addComponent(Edit_HWorASSINGMENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Add_HW, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
@@ -207,22 +206,22 @@ public class MenuTeacher extends javax.swing.JFrame {
         
     }                                      
 
-    private void Edit_GradeActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void Submit_GradeActionPerformed(java.awt.event.ActionEvent evt) {                                             
         MenuGrade backgrade = new MenuGrade();
         backgrade.setVisible(true);
         backgrade.pack();
         backgrade.setLocationRelativeTo(null);
         this.dispose();
-    }                                          
+    }                                            
 
-    private void Edit_HWorASSINGMENTSActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+    private void Add_HWActionPerformed(java.awt.event.ActionEvent evt) {                                       
         Homework backHomework = new Homework();
         backHomework.setVisible(true);
         backHomework.pack();
         backHomework.setLocationRelativeTo(null);
         this.dispose();
         
-    }                                                    
+    }                                      
 
     private void IconGradeActionPerformed(java.awt.event.ActionEvent evt) {                                          
         MenuGrade backgrade = new MenuGrade();
@@ -253,14 +252,12 @@ public class MenuTeacher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton Edit_Grade;
-    private javax.swing.JButton Edit_HWorASSINGMENTS;
+    private javax.swing.JButton Add_HW;
     private javax.swing.JButton IconGrade;
     private javax.swing.JButton IconHomeWork;
     private javax.swing.JButton Logout;
     private javax.swing.JLabel Name_Teacher;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton Submit_Grade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration                   
