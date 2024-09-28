@@ -1,8 +1,3 @@
-package guimenuteacher;
-
-import GUIgrade.MenuGrade;
-import GUIhomework.Homework;
-import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -248,11 +243,6 @@ public class MenuTeacher extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    UIManager.setLookAndFeel( new FlatLightLaf() );
-                } catch( Exception ex ) {
-                    System.err.println( "Failed to initialize LaF" );
-                }
                 
                 MenuTeacher menu = new MenuTeacher();
                 menu.setVisible(true);
