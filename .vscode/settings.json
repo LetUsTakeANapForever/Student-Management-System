@@ -1,0 +1,12 @@
+{
+    "java.project.sourcePaths": [
+        ".",
+        "src\\GUIgrade",
+        "src\\GUIhomework",
+        "src\\guimenuteacher",
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib\\mysql-connector-j-9.0.0.jar"
+    ]
+}
