@@ -280,7 +280,7 @@ public class LoginStd extends javax.swing.JFrame {
     }
     //BackGround JFrame
      public void BG1(){
-        ImageIcon icon = new ImageIcon("C:\\PicturePJ\\nontri-59_19.jpg");
+        ImageIcon icon = new ImageIcon("src/pics/nontri-59_19.jpg");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(674, 590,Image.SCALE_SMOOTH);
         ImageIcon ScaleIcon = new ImageIcon(imgScale);
