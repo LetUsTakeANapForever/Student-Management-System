@@ -347,7 +347,7 @@ public class Login extends javax.swing.JFrame {
             Statement statement = connection.createStatement();
 
             String sql = String.format("SELECT teacher_id, teacher_password FROM teachers WHERE teacher_id = \"%s\" AND teacher_password = \"%s\"",id,password);
-            ResultSet resultset = statement.exceuteQuery(sql)
+            ResultSet resultset = statement.executeQuery(sql)
 
             return resultset.next();
         }catch(Exception e){
