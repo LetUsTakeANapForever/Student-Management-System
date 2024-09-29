@@ -271,7 +271,14 @@ public class LoginStd extends javax.swing.JFrame {
     }//GEN-LAST:event_SwarptoTeacherActionPerformed
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
-        
+        String password = new String(PasswordField.getPassword())
+            if(checkAccount(FieldUser.getText(),password)){
+            MenuStudent menustudent = new MenuStudent();
+            menustudent.setVisible(true);
+            menustudent.pack();
+            menustudent.setLocationRelativeTo(null);
+            this.dispose();
+        }
     }//GEN-LAST:event_LoginBTActionPerformed
     //Icon Frame
     private void IconFrame(){
@@ -319,6 +326,20 @@ public class LoginStd extends javax.swing.JFrame {
                 new LoginStd().setVisible(true);
             }
         });
+    }
+    public boolean checkAccount(String id,String password){
+         String connectURL = "jdbc:mysql/localhost/3306/?user=root&password=.รหัสตัวเอง";
+        try{
+            Connection connection = DriverManager.getConnection(connectURL);
+            Statement statement = connection.createStatement(connection);
+            String sql = String.format("SELECT student_id,student_password FROM students WHERE student_id=\"%s\" AND student_password=\"%s\"",id,password);
+
+            ResultSet resultset = statement.executeQuery(sql);
+            return resultset.next();
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
