@@ -289,7 +289,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginBTActionPerformed
     //set BackGround 
     public void BG(){
-        ImageIcon icon = new ImageIcon("C:\\PicturePJ\\nontri-59_19.jpg");
+        ImageIcon icon = new ImageIcon("src/pics/nontri-59_19.jpg");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(674, 590,Image.SCALE_SMOOTH);
         ImageIcon ScaleIcon = new ImageIcon(imgScale);
