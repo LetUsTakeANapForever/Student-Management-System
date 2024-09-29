@@ -158,7 +158,8 @@ public class Homework extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableHW);
-
+        jTableHW.getTableHeader().setReorderingAllowed(false);
+        
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
