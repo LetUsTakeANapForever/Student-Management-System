@@ -17,7 +17,7 @@ A Java-based application that allows users (teachers and students) to manage stu
 
 **Programming Language:** Java
 
-**GUI Framework:** Java Swing, Netbeans
+**GUI Framework:** Java Swing
 
 **Database:** MySQL
 
