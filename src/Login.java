@@ -285,7 +285,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_SwarptoStudentActionPerformed
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
-        
+        String password = new String(Passwordfield.getPassword());
+        if(checkAccount(FieldUser,password)){
+            MenuTeacher menuteacher = new MenuTeacher();
+            menuteacher.setVisible(true);
+            menuteacher.pack();
+            menuteacher.setLocationRelativeTo(null);
+            this.dispose();
+        }
     }//GEN-LAST:event_LoginBTActionPerformed
     //set BackGround 
     public void BG(){
@@ -330,10 +337,22 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
-                
-                
             }
         });
+    }
+    public boolean checkAccount(String id, String password){
+        String connectURL = "jdbc:mysql/localhost:3306/student_management?user=root&password= ของตัวเอง";
+        try{
+            Connection connection = DriverManager.getConnection(connectURL);
+            Statement statement = connection.createStatement();
+
+            String sql = String.format("SELECT teacher_id, teacher_password FROM teachers WHERE teacher_id = \"%s\" AND teacher_password = \"%s\"",id,password);
+            ResultSet resultset = statement.exceuteQuery(sql)
+
+            return resultset.next();
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
