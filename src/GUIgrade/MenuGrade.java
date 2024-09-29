@@ -79,7 +79,8 @@ public class MenuGrade extends javax.swing.JFrame {
                     
                 String query = String.format("UPDATE registration SET grade = \"%s\" WHERE std_id = \"%s\" AND subject_id = \"%s\";", gradeInput, stdIDInput, subjectIDInput);
                 statement.executeUpdate(query);
-                JOptionPane.showMessageDialog(this, "Submitted Grade", "Successful submission", JOptionPane.INFORMATION_MESSAGE);
+                String msg = String.format("Submitted Grade %s to %s (%s)", gradeInput, stdIDInput, subjectIDInput);
+                JOptionPane.showMessageDialog(this, msg, "Successful submission", JOptionPane.INFORMATION_MESSAGE);
 
             }catch (SQLException except){
                 except.printStackTrace();
