@@ -17,7 +17,7 @@ public class SeeGrade extends javax.swing.JFrame {
     public SeeGrade() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
-        ImageIcon icon = new ImageIcon("C:\\PicturePJ\\nontri-59_19.jpg");
+        ImageIcon icon = new ImageIcon("src/pics/nontri-59_19.jpg");
     }
 
     /**
