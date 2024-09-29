@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package project;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -44,13 +43,13 @@ public class MenuStudent extends javax.swing.JFrame {
         this.SeeHMStd.setContentAreaFilled(false);
     }
     public void Icon(){
-        ImageIcon icon = new ImageIcon("C:\\PicturePJ\\2641409.png");
+        ImageIcon icon = new ImageIcon("src/pics/2641409.png");
                 Image img = icon.getImage();
                 Image resizedImg = img.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon = new ImageIcon(resizedImg);
                 this.IconSeeGrade.setIcon(resizedIcon);
                 
-                ImageIcon icon2 = new ImageIcon("C:\\PicturePJ\\ImageIcon2.png");
+                ImageIcon icon2 = new ImageIcon("src/pics/ImageIcon2.png");
                 Image img2 = icon2.getImage();
                 Image resizedImg2 = img2.getScaledInstance(140, 120, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon2 = new ImageIcon(resizedImg2);
