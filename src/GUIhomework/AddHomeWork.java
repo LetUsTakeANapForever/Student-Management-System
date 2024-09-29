@@ -4,6 +4,7 @@
  */
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
@@ -122,6 +123,17 @@ public class AddHomeWork extends javax.swing.JFrame {
                 connection = SQLConnection.getConnection1();
                 Statement statement = connection.createStatement();
 
+                if (!doesExists(assignedToStd)){
+                    JOptionPane.showMessageDialog(this, "Unknown student ID", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (!hasRegistered(assignedToStd, subjectID)){
+                    String msg = String.format("%s hasn't registered %s", assignedToStd, subjectID);
+                    JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 String query = String.format("INSERT INTO homework (assigned_date, due_date, subject_id, description, assigned_to_std, assigned_by_teacher) VALUES (\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")", assignedDate, dueDate, subjectID, description, assignedToStd, assignedByTeacher);
                 statement.executeUpdate(query);
                 String msg = String.format("(%s) %s assigned %s to %s (due %s)", assignedDate, assignedByTeacher, subjectID,  assignedToStd, dueDate);
@@ -193,7 +205,22 @@ public class AddHomeWork extends javax.swing.JFrame {
         backHW.setLocationRelativeTo(null);
         backHW.pack();
         this.dispose();
-    }                                      
+    }   
+    
+    public boolean doesExists(String std_id) throws SQLException{
+        Statement statement = connection.  createStatement();
+        String fectchStdQuery = String.format("SELECT std_id FROM students WHERE std_id = \"%s\"", std_id);
+        ResultSet rs = statement.executeQuery(fectchStdQuery);
+        return rs.next();
+    }
+
+    public boolean hasRegistered(String std_id, String subject_id) throws SQLException {
+        Statement statement = connection.  createStatement();
+        String fectchStdQuery = String.format("SELECT std_id, subject_id FROM registration WHERE std_id = \"%s\" AND subject_id = \"%s\"", std_id, subject_id);
+        ResultSet rs = statement.executeQuery(fectchStdQuery);
+        return rs.next();
+    }
+
 
     /**
      * @param args the command line arguments
