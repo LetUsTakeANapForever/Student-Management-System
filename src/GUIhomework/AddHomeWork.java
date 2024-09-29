@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -10,6 +16,8 @@ import javax.swing.UIManager;
  * @author G15
  */
 public class AddHomeWork extends javax.swing.JFrame {
+
+    static Connection connection;
 
     /**
      * Creates new form AddHomeWork
@@ -103,6 +111,25 @@ public class AddHomeWork extends javax.swing.JFrame {
         jButtonSubmit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonSubmit.setText("SUBMIT");
         jButtonSubmit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSubmit.addActionListener(e -> {
+            LocalDate assignedDate = LocalDate.now();
+            String dueDate = jTextDate.getText();
+            String subjectID = jTextSJ_ID.getText();
+            String description = jTextDC.getText();
+            String assignedToStd = jTextST_ID.getText();
+            String assignedByTeacher = "t1234"; // teacher_id after login
+            try{
+                connection = SQLConnection.getConnection1();
+                Statement statement = connection.createStatement();
+
+                String query = String.format("INSERT INTO homework (assigned_date, due_date, subject_id, description, assigned_to_std, assigned_by_teacher) VALUES (\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")", assignedDate, dueDate, subjectID, description, assignedToStd, assignedByTeacher);
+                statement.executeUpdate(query);
+                String msg = String.format("(%s) %s assigned %s to %s (due %s)", assignedDate, assignedByTeacher, subjectID,  assignedToStd, dueDate);
+                JOptionPane.showMessageDialog(this, msg, "Success", JOptionPane.INFORMATION_MESSAGE);
+            }catch (SQLException exept) {
+                exept.printStackTrace();
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
