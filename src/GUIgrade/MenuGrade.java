@@ -1,14 +1,18 @@
 import java.awt.Color;
 import javax.swing.UIManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class MenuGrade extends javax.swing.JFrame {
-
+    static Connection connection;
     /**
      * Creates new form MenuGrade
      */
     public MenuGrade() {
         initComponents();
-        //JBlackground2();
         this.getContentPane().setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
     }
@@ -43,17 +47,44 @@ public class MenuGrade extends javax.swing.JFrame {
         setResizable(false);
 
         LabelStudent_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelStudent_ID.setText("Student ID :");
+        LabelStudent_ID.setText("STUDENT ID :");
 
         LabelSubject_id.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelSubject_id.setText("Subject ID :");
+        LabelSubject_id.setText("SUBJECT ID :");
 
         LabelGrade.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelGrade.setText(" Grade :");
+        LabelGrade.setText(" GRADE :");
 
         Submit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Submit.setText("SUBMIT");
         Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Submit.addActionListener(e -> {
+            String stdIDInput = ID_Student.getText();
+            String subjectIDInput = ID_Subject.getText();
+            String gradeInput = item_Grade.getSelectedItem().toString();
+            try{
+                connection = SQLConnection.getConnection1();
+                Statement statement = connection.createStatement();
+                
+                if (!doesExists(stdIDInput)){
+                    JOptionPane.showMessageDialog(this, "Unknown student ID", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (!hasRegistered(stdIDInput, subjectIDInput)){
+                    String msg = String.format("%s hasn't registered %s", stdIDInput, subjectIDInput);
+                    JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                    
+                String query = String.format("UPDATE registration SET grade = \"%s\" WHERE std_id = \"%s\" AND subject_id = \"%s\";", gradeInput, stdIDInput, subjectIDInput);
+                statement.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "Submitted Grade", "Successful submission", JOptionPane.INFORMATION_MESSAGE);
+
+            }catch (SQLException except){
+                except.printStackTrace();
+            }
+        });
 
         item_Grade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         item_Grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B+", "B", "C+", "C", "D+", "D", "F" }));
@@ -156,7 +187,21 @@ public class MenuGrade extends javax.swing.JFrame {
         backmenu.pack();
         backmenu.setLocationRelativeTo(null);
         this.dispose();
-    }                                     
+    }
+
+    public boolean doesExists(String std_id) throws SQLException{
+        Statement statement = connection.  createStatement();
+        String fectchStdQuery = String.format("SELECT std_id FROM students WHERE std_id = \"%s\"", std_id);
+        ResultSet rs = statement.executeQuery(fectchStdQuery);
+        return rs.next();
+    }
+
+    public boolean hasRegistered(String std_id, String subject_id) throws SQLException {
+        Statement statement = connection.  createStatement();
+        String fectchStdQuery = String.format("SELECT std_id, subject_id FROM registration WHERE std_id = \"%s\" AND subject_id = \"%s\"", std_id, subject_id);
+        ResultSet rs = statement.executeQuery(fectchStdQuery);
+        return rs.next();
+    }
 
     /**
      * @param args the command line arguments

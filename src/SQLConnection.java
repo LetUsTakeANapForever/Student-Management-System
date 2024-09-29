@@ -4,13 +4,9 @@ import java.sql.SQLException;
 
 public class SQLConnection {
     static Connection connection;
-    public static Connection getConnection1(){
-        try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management?user=root&password=");
-            System.out.println("Connection Successful");
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static Connection getConnection1() throws SQLException{
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management?user=root&password=");
+        // System.out.println("Connection Successful");
         return connection;
     }
     /* TODO : Add a new connection

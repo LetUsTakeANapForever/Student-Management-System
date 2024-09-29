@@ -44,13 +44,13 @@ public class MenuTeacher extends javax.swing.JFrame {
     
     public void JSetimageIcon(){
         
-                ImageIcon icon = new ImageIcon("C:/Users/G15/Pictures/2641409.png");
+                ImageIcon icon = new ImageIcon("src/guimenuteacher/2641409.png");
                 Image img = icon.getImage();
                 Image resizedImg = img.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon = new ImageIcon(resizedImg);
                 this.IconGrade.setIcon(resizedIcon);
                 
-                ImageIcon icon2 = new ImageIcon("C:/Users/G15/Pictures/ImageIcon2.png");
+                ImageIcon icon2 = new ImageIcon("src/guimenuteacher/ImageIcon2.png");
                 Image img2 = icon2.getImage();
                 Image resizedImg2 = img2.getScaledInstance(130, 110, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon2 = new ImageIcon(resizedImg2);
