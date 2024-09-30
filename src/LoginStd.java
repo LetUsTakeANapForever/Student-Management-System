@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.*;
 
 /**
  *
@@ -275,7 +276,7 @@ public class LoginStd extends javax.swing.JFrame {
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String password = new String(Passwordfield.getPassword());
             if(checkAccount(FieldUser.getText(), password)){
-            String stdname = getUserInFo(FieldUser.getText());
+            String stdname = getUserInfo(FieldUser.getText());
             MenuStudent menustudent = new MenuStudent(stdname);
             menustudent.setVisible(true);
             menustudent.pack();
@@ -347,9 +348,8 @@ public class LoginStd extends javax.swing.JFrame {
         }
     }
      public String getUserInfo(String ID){
-        String conntectURL = "jdbc:mysql://localhost:3306/student_management?user=root&password=???";
         try{
-        Connection connection = DriverManager.getConnection(conntectURL);
+        Connection connection = SQLConnection.getConnection1();
         Statement statement = connection.createStatement();
         String sql = String.format("SELECT std_id,std_firstname,std_lastname FROM students WHERE std_id=\"%s\"",ID);
         ResultSet resultSet = statement.executeQuery(sql);

@@ -19,6 +19,7 @@ import javax.swing.UIManager;
 public class AddHomeWork extends javax.swing.JFrame {
 
     static Connection connection;
+    private String teacher_id;
 
     /**
      * Creates new form AddHomeWork
@@ -27,6 +28,7 @@ public class AddHomeWork extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
+        // this.teacher_id = teacher_id;
     }
 
     /**

@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -360,9 +361,8 @@ public class Login extends javax.swing.JFrame {
         }
     }
     public String getUserInfo(String ID){
-        String conntectURL = "jdbc:mysql://localhost:3306/student_management?user=root&password=???";
         try{
-        Connection connection = DriverManager.getConnection(conntectURL);
+        Connection connection = SQLConnection.getConnection1();
         Statement statement = connection.createStatement();
         String sql = String.format("SELECT teacher_id,teacher_firstname,teacher_lastname FROM teachers WHERE teacher_id=\"%s\"",ID);
         ResultSet resultSet = statement.executeQuery(sql);
