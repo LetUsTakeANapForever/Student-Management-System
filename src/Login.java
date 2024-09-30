@@ -18,7 +18,7 @@ import javax.swing.*;
  * @author ASUS
  */
 public class Login extends javax.swing.JFrame {
-
+    static String teachername;
     /**
      * Creates new form Login
      */
@@ -292,8 +292,8 @@ public class Login extends javax.swing.JFrame {
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String password = new String(Passwordfield.getPassword());
         if(checkAccount(FieldUser.getText(), password)){
-            String teachername = getUserInfo(FieldUser.getText());
-            MenuTeacher menuteacher = new MenuTeacher(teachername);
+            teachername = getUserInfo(FieldUser.getText());
+            MenuTeacher menuteacher = new MenuTeacher();
             menuteacher.setVisible(true);
             menuteacher.pack();
             menuteacher.setLocationRelativeTo(null);
