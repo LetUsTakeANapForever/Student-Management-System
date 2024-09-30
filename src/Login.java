@@ -289,7 +289,8 @@ public class Login extends javax.swing.JFrame {
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String password = new String(Passwordfield.getPassword());
         if(checkAccount(FieldUser.getText(), password)){
-            MenuTeacher menuteacher = new MenuTeacher();
+            String teachername = getUserInfo(FieldUser.getText());
+            MenuTeacher menuteacher = new MenuTeacher(teachername);
             menuteacher.setVisible(true);
             menuteacher.pack();
             menuteacher.setLocationRelativeTo(null);
@@ -357,6 +358,24 @@ public class Login extends javax.swing.JFrame {
             System.out.println(e);
             return false;
         }
+    }
+    public String getUserInfo(String ID){
+        String conntectURL = "jdbc:mysql://localhost:3306/student_management?user=root&password=???";
+        try{
+        Connection connection = DriverManager.getConnection(conntectURL);
+        Statement statement = connection.createStatement();
+        String sql = String.format("SELECT teacher_id,teacher_firstname,teacher_lastname FROM teachers WHERE teacher_id=\"%s\"",ID);
+        ResultSet resultSet = statement.executeQuery(sql);
+        while(resultSet.next()){
+            if(ID.equals(resultSet.getString("teacher_id"))){
+                return resultSet.getString("teacher_firstname")+" "+resultSet.getString("teacher_lastname")+" "+resultSet.getString("teacher_id");
+            }
+        }
+        }catch(Exception e){
+        System.out.println(e);
+            return "not found";
+        }
+        return "not found";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
