@@ -19,7 +19,6 @@ import javax.swing.UIManager;
 public class AddHomeWork extends javax.swing.JFrame {
 
     static Connection connection;
-    private String teacher_id;
 
     /**
      * Creates new form AddHomeWork
@@ -120,7 +119,7 @@ public class AddHomeWork extends javax.swing.JFrame {
             String subjectID = jTextSJ_ID.getText();
             String description = jTextDC.getText();
             String assignedToStd = jTextST_ID.getText();
-            String assignedByTeacher = "t1234"; // teacher_id after login
+            String assignedByTeacher = Login.teacherId;
             try{
                 connection = SQLConnection.getConnection1();
                 Statement statement = connection.createStatement();
