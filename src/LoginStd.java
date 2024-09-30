@@ -281,6 +281,9 @@ public class LoginStd extends javax.swing.JFrame {
             menustudent.setLocationRelativeTo(null);
             this.dispose();
         }
+        else{
+            JOptionPane.showMessageDialog(LoginStd.this, "Wrong User or Password","Login Failed",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_LoginBTActionPerformed
     //Icon Frame
     private void IconFrame(){
