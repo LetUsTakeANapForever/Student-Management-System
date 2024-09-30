@@ -17,6 +17,13 @@ public class MenuStudent extends javax.swing.JFrame {
     /**
      * Creates new form MenuStudent
      */
+    public MenuStudent(stdname) {
+        initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
+        Icon();
+        JButtonBlackground();
+        jLabel1.setText(stdname);
+    }
     public MenuStudent() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
