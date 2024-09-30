@@ -18,6 +18,7 @@ public class LoginStd extends javax.swing.JFrame {
     /**
      * Creates new form LoginStd
      */
+    static String std_name;
     public LoginStd() {
         initComponents();
         BG1();
@@ -276,8 +277,8 @@ public class LoginStd extends javax.swing.JFrame {
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String password = new String(Passwordfield.getPassword());
             if(checkAccount(FieldUser.getText(), password)){
-            String stdname = getUserInfo(FieldUser.getText());
-            MenuStudent menustudent = new MenuStudent(stdname);
+            std_name = getUserInfo(FieldUser.getText());
+            MenuStudent menustudent = new MenuStudent();
             menustudent.setVisible(true);
             menustudent.pack();
             menustudent.setLocationRelativeTo(null);
