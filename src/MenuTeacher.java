@@ -202,8 +202,12 @@ public class MenuTeacher extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {                                                                          
+        Login login = new Login();
+        login.setVisible(true);
+        login.pack();
+        login.setLocationRelativeTo(null);
+        this.dispose();
     }                                      
 
     private void Submit_GradeActionPerformed(java.awt.event.ActionEvent evt) {                                             
