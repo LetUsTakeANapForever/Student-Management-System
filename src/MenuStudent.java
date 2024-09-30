@@ -22,7 +22,7 @@ public class MenuStudent extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.WHITE);
         Icon();
         JButtonBlackground();
-        jLabel1.setText(LoginStd.std_name);
+        jLabel1.setText(LoginStd.stdName);
     }
     
     public void JButtonBlackground(){
