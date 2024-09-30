@@ -368,7 +368,7 @@ public class Login extends javax.swing.JFrame {
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()){
             if(ID.equals(resultSet.getString("teacher_id"))){
-                return resultSet.getString("teacher_firstname")+" "+resultSet.getString("teacher_lastname")+" "+resultSet.getString("teacher_id");
+                return resultSet.getString("teacher_firstname")+" "+resultSet.getString("teacher_lastname")+" "+resultSet.getString("teacher_id")+" (TEACHER)";
             }
         }
         }catch(Exception e){
