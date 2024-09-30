@@ -275,7 +275,8 @@ public class LoginStd extends javax.swing.JFrame {
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String password = new String(Passwordfield.getPassword());
             if(checkAccount(FieldUser.getText(), password)){
-            MenuStudent menustudent = new MenuStudent();
+            String stdname = getUserInFo(FieldUser.getText());
+            MenuStudent menustudent = new MenuStudent(stdname);
             menustudent.setVisible(true);
             menustudent.pack();
             menustudent.setLocationRelativeTo(null);
@@ -345,7 +346,24 @@ public class LoginStd extends javax.swing.JFrame {
             return false;
         }
     }
-
+     public String getUserInfo(String ID){
+        String conntectURL = "jdbc:mysql://localhost:3306/student_management?user=root&password=???";
+        try{
+        Connection connection = DriverManager.getConnection(conntectURL);
+        Statement statement = connection.createStatement();
+        String sql = String.format("SELECT std_id,std_firstname,std_lastname FROM students WHERE std_id=\"%s\"",ID);
+        ResultSet resultSet = statement.executeQuery(sql);
+        while(resultSet.next()){
+            if(ID.equals(resultSet.getString("std_id"))){
+                return resultSet.getString("std_firstname")+" "+resultSet.getString("std_lastname")+" "+resultSet.getString("std_id")+" (STUDENT)";
+            }
+        }
+        }catch(Exception e){
+        System.out.println(e);
+            return "not found";
+        }
+        return "";
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG1;
     private javax.swing.JPanel BGPanel;
