@@ -294,6 +294,8 @@ public class Login extends javax.swing.JFrame {
             menuteacher.pack();
             menuteacher.setLocationRelativeTo(null);
             this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(Login.this, "Wrong User or Password","Login Failed",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_LoginBTActionPerformed
     //set BackGround 
