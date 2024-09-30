@@ -10,7 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.UIManager;
 
 public class MenuTeacher extends javax.swing.JFrame {
-
+    public MenuTeacher(String teachername) {
+        initComponents();
+        JButtonBlackground();
+        JSetimageIcon();
+        this.getContentPane().setBackground(Color.WHITE);
+        this.setLocationRelativeTo(null);
+        Name_Teacher.setText(teachername);
+    }
     public MenuTeacher() {
         initComponents();
         JButtonBlackground();
