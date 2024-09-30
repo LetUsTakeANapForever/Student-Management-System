@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -271,8 +273,8 @@ public class LoginStd extends javax.swing.JFrame {
     }//GEN-LAST:event_SwarptoTeacherActionPerformed
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
-        String password = new String(PasswordField.getPassword())
-            if(checkAccount(FieldUser.getText(),password)){
+        String password = new String(Passwordfield.getPassword());
+            if(checkAccount(FieldUser.getText(), password)){
             MenuStudent menustudent = new MenuStudent();
             menustudent.setVisible(true);
             menustudent.pack();
@@ -328,11 +330,10 @@ public class LoginStd extends javax.swing.JFrame {
         });
     }
     public boolean checkAccount(String id,String password){
-         String connectURL = "jdbc:mysql/localhost/3306/?user=root&password=.รหัสตัวเอง";
         try{
-            Connection connection = DriverManager.getConnection(connectURL);
-            Statement statement = connection.createStatement(connection);
-            String sql = String.format("SELECT student_id,student_password FROM students WHERE student_id=\"%s\" AND student_password=\"%s\"",id,password);
+            Connection connection = SQLConnection.getConnection1();
+            Statement statement = connection.createStatement();
+            String sql = String.format("SELECT std_id,std_password FROM students WHERE std_id=\"%s\" AND std_password=\"%s\"",id,password);
 
             ResultSet resultset = statement.executeQuery(sql);
             return resultset.next();

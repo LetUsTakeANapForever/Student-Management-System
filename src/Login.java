@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -286,7 +288,7 @@ public class Login extends javax.swing.JFrame {
 
     private void LoginBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBTActionPerformed
         String password = new String(Passwordfield.getPassword());
-        if(checkAccount(FieldUser,password)){
+        if(checkAccount(FieldUser.getText(), password)){
             MenuTeacher menuteacher = new MenuTeacher();
             menuteacher.setVisible(true);
             menuteacher.pack();
@@ -341,18 +343,18 @@ public class Login extends javax.swing.JFrame {
         });
     }
     public boolean checkAccount(String id, String password){
-        String connectURL = "jdbc:mysql/localhost:3306/student_management?user=root&password= ของตัวเอง";
         try{
-            Connection connection = DriverManager.getConnection(connectURL);
+            Connection connection = SQLConnection.getConnection1();
             Statement statement = connection.createStatement();
 
             String sql = String.format("SELECT teacher_id, teacher_password FROM teachers WHERE teacher_id = \"%s\" AND teacher_password = \"%s\"",id,password);
-            ResultSet resultset = statement.executeQuery(sql)
+            ResultSet resultset = statement.executeQuery(sql);
 
             return resultset.next();
         }catch(Exception e){
             System.out.println(e);
             return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
