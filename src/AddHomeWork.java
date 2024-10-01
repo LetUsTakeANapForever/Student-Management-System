@@ -121,7 +121,7 @@ public class AddHomeWork extends javax.swing.JFrame {
             String assignedToStd = jTextST_ID.getText();
             String assignedByTeacher = Login.teacherId;
             try{
-                connection = SQLConnection.getConnection1();
+                connection = SQLConnection.getConnection2();
                 Statement statement = connection.createStatement();
 
                 if (!doesExists(assignedToStd)){

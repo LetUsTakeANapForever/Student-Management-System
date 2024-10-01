@@ -63,7 +63,7 @@ public class MenuGrade extends javax.swing.JFrame {
             String subjectIDInput = ID_Subject.getText();
             String gradeInput = item_Grade.getSelectedItem().toString();
             try{
-                connection = SQLConnection.getConnection1();
+                connection = SQLConnection.getConnection2();
                 Statement statement = connection.createStatement();
                 
                 if (!doesExists(stdIDInput)){
