@@ -262,9 +262,9 @@ public class HomeworkStd extends javax.swing.JFrame {
             new String[]{"ASSIGNED DATE", "SUBJECT", "DESCRIPTION","DUE DATE","ASSIGNED TO"}, 0
         );
         try{
-        Connection connection = SQLConnection.getConnection3();
+        Connection connection = SQLConnection.getConnection2();
         Statement statement = connection.createStatement();
-        String sql = String.format("SELECT homework.assigned_date,all_subjects.subject_name,homework.description,homework.due_date, homework.assigned_to_std FROM registration JOIN students ON REGISTRATION.std_id = students.std_id JOIN all_subjects ON REGISTRATION.subject_id = all_subjects.subject_id JOIN homework ON students.std_id = homework.assigned_to_std WHERE students.std_id = \"%s\"",LoginStd.std_id);
+        String sql = String.format("SELECT homework.assigned_date,all_subjects.subject_name,homework.description,homework.due_date, homework.assigned_to_std FROM homework JOIN students ON homework.assigned_to_std = students.std_id JOIN all_subjects ON all_subjects.subject_id = homework.subject_id WHERE homework.assigned_to_std = \"%S\"",LoginStd.std_id);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
