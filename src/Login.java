@@ -351,7 +351,7 @@ public class Login extends javax.swing.JFrame {
     }
     public boolean checkAccount(String id, String password){
         try{
-            Connection connection = SQLConnection.getConnection1();
+            Connection connection = SQLConnection.getConnection2();
             Statement statement = connection.createStatement();
 
             String sql = String.format("SELECT teacher_id, teacher_password FROM teachers WHERE teacher_id = \"%s\" AND teacher_password = \"%s\"",id,password);
@@ -365,7 +365,7 @@ public class Login extends javax.swing.JFrame {
     }
     public String getUserInfo(String ID){
         try{
-        Connection connection = SQLConnection.getConnection1();
+        Connection connection = SQLConnection.getConnection2();
         Statement statement = connection.createStatement();
         String sql = String.format("SELECT teacher_id,teacher_firstname,teacher_lastname FROM teachers WHERE teacher_id=\"%s\"",ID);
         ResultSet resultSet = statement.executeQuery(sql);
