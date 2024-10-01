@@ -4,7 +4,13 @@
  */
 import java.awt.Color;
 import javax.swing.ImageIcon;
-
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import javax.swing.table.*;
+import java.util.Map;
+import java.util.HashMap;
 /**
  *
  * @author ASUS
@@ -89,65 +95,14 @@ public class SeeGrade extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "Cumulative credit", "Cumutive GPA"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setEditingColumn(10);
-        jTable1.setEditingRow(10);
-        jTable1.setRowHeight(30);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID Subject", "Subject", "Grade"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable2.getTableHeader().setReorderingAllowed(false);
+        
+        getGradeInfo();
         jScrollPane3.setViewportView(jTable2);
+
+        
+        
+        jScrollPane3.setViewportView(jTable2);
+        
 
         jPanel1.setBackground(new java.awt.Color(12, 137, 112));
 
@@ -217,6 +172,55 @@ public class SeeGrade extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void getGradeInfo(){
+        Map<String, Double> grades = new HashMap<>();
+        grades.put("A", 4.0);
+        grades.put("B+", 3.5);
+        grades.put("B", 3.0);
+        grades.put("C+", 2.5);
+        grades.put("C", 2.0);
+        grades.put("D+", 1.5);
+        grades.put("D", 1.0);
+        grades.put("F", 0.0);
+        double sumGrade=0.0;
+        double GPA = 0.0;
+        double allCredit = 15.0;
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"ID Subject", "Subject", "Grade"}, 0
+        );
+        DefaultTableModel model2 = new DefaultTableModel(
+            new String[]{"Cumulative credit", "Cumutive GPA"}, 0
+        );
+        try{
+        Connection connection = SQLConnection.getConnection2();
+        Statement statement = connection.createStatement();
+        String sql = String.format("SELECT all_subjects.subject_name,registration.subject_id, students.std_id,REGISTRATION.grade FROM registration JOIN students ON REGISTRATION.std_id = students.std_id JOIN all_subjects ON REGISTRATION.subject_id = all_subjects.subject_id WHERE students.std_id = \"%s\"",LoginStd.std_id);
+
+        ResultSet resultSet = statement.executeQuery(sql);
+        while(resultSet.next()) {
+            String subjectId = resultSet.getString("subject_id");
+            String subjectName = resultSet.getString("subject_name");
+            String grade = resultSet.getString("grade");
+            model.addRow(new Object[]{subjectId, subjectName, grade});
+            sumGrade += grades.get(resultSet.getString("grade"))*3;
+        }   
+            GPA = sumGrade/allCredit;
+            String gpa  = String.format("%.2f",GPA);
+            jTable2.setModel(model);
+            jTable2.getTableHeader().setReorderingAllowed(false);
+            
+            model2.addRow(new Object[]{allCredit,gpa});
+            jTable1.setModel(model2);
+            jTable1.setEditingColumn(10);
+            jTable1.setEditingRow(10);
+            jTable1.setRowHeight(30);
+            jTable1.getTableHeader().setReorderingAllowed(false);
+            jScrollPane1.setViewportView(jTable1);
+    }catch(Exception e){
+        System.out.println(e);
+    }
+}
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
