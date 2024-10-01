@@ -19,6 +19,7 @@ public class LoginStd extends javax.swing.JFrame {
      * Creates new form LoginStd
      */
     static String stdName;
+    static String std_id;
     public LoginStd() {
         initComponents();
         BG1();
