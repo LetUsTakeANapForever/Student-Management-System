@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,123 +47,123 @@ public class Homework extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTableHW.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ASSIGNED DATE", "SUBJECT", "DESCRIPTION", "DUE DATE", "ASSIGNED TO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        // jTableHW.setModel(new javax.swing.table.DefaultTableModel(
+        //     new Object [][] {
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null},
+        //         {null, null, null, null, null}
+        //     },
+        //     new String [] {
+        //         "ASSIGNED DATE", "SUBJECT", "DESCRIPTION", "DUE DATE", "ASSIGNED TO"
+        //     }
+        // ) {
+        //     boolean[] canEdit = new boolean [] {
+        //         false, false, false, false, false
+        //     };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        //     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        //         return canEdit [columnIndex];
+        //     }
+        // });
+        addHomeworkInfo();
         jScrollPane1.setViewportView(jTableHW);
-        jTableHW.getTableHeader().setReorderingAllowed(false);
         
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -253,6 +258,31 @@ public class Homework extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void addHomeworkInfo(){
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"ASSIGNED DATE", "SUBJECT", "DESCRIPTION","DUE DATE","ASSIGNED TO"}, 0
+        );
+        try{
+        Connection connection = SQLConnection.getConnection2();
+        Statement statement = connection.createStatement();
+        String sql = String.format("SELECT homework.assigned_date,all_subjects.subject_name,homework.description,homework.due_date, homework.assigned_to_std FROM homework JOIN teachers ON teachers.teacher_id = homework.assigned_by_teacher JOIN all_subjects ON all_subjects.subject_id = homework.subject_id WHERE homework.assigned_by_teacher = \"%S\"",Login.teacherId);
+
+        ResultSet resultSet = statement.executeQuery(sql);
+        while(resultSet.next()) {
+            String assigneddate = resultSet.getString("assigned_date");
+            String subjectName = resultSet.getString("subject_name");
+            String description = resultSet.getString("description");
+            String duedate = resultSet.getString("due_date");
+            String assignedto = resultSet.getString("assigned_to_std");
+            model.addRow(new Object[]{assigneddate, subjectName, description,duedate,assignedto});
+        }
+            jTableHW.setModel(model);
+            jTableHW.getTableHeader().setReorderingAllowed(false);
+
+    }catch(Exception e){
+        System.out.println(e);
+    }
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
