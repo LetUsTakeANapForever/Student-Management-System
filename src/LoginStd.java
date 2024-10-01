@@ -357,6 +357,7 @@ public class LoginStd extends javax.swing.JFrame {
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()){
             if(ID.equals(resultSet.getString("std_id"))){
+                std_id = resultSet.getString("std_id");
                 return resultSet.getString("std_firstname")+" "+resultSet.getString("std_lastname")+" "+resultSet.getString("std_id")+" (STUDENT)";
             }
         }
