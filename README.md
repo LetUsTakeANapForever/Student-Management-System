@@ -26,7 +26,7 @@ A Java-based application that allows users (teachers and students) to manage stu
 
 ## Usage
 
-**1.** Open the project in your IDE and run the main class.
+**1.** Open the jar file.
 
 **2.** Use login interface to access the system.
 
