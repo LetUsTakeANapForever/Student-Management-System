@@ -194,7 +194,7 @@ public class SeeGrade extends javax.swing.JFrame {
         try{
         Connection connection = SQLConnection.getConnection2();
         Statement statement = connection.createStatement();
-        String sql = String.format("SELECT all_subjects.subject_name,registration.subject_id, students.std_id,REGISTRATION.grade FROM registration JOIN students ON REGISTRATION.std_id = students.std_id JOIN all_subjects ON REGISTRATION.subject_id = all_subjects.subject_id WHERE students.std_id = \"%s\"",LoginStd.std_id);
+        String sql = String.format("SELECT all_subjects.subject_name,registration.subject_id, students.std_id,REGISTRATION.grade FROM registration JOIN students ON REGISTRATION.std_id = students.std_id JOIN all_subjects ON REGISTRATION.subject_id = all_subjects.subject_id WHERE students.std_id = \"%s\" AND grade IS NOT NULL",LoginStd.std_id);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
