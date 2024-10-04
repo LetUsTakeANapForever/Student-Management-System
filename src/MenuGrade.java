@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import javax.swing.UIManager;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ public class MenuGrade extends javax.swing.JFrame {
      */
     public MenuGrade() {
         initComponents();
+        //JBlackground2();
         this.getContentPane().setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
     }
@@ -33,7 +35,6 @@ public class MenuGrade extends javax.swing.JFrame {
     private void initComponents() {
 
         LabelStudent_ID = new javax.swing.JLabel();
-        LabelSubject_id = new javax.swing.JLabel();
         LabelGrade = new javax.swing.JLabel();
         Submit = new javax.swing.JButton();
         ID_Student = new javax.swing.JTextField();
@@ -41,7 +42,7 @@ public class MenuGrade extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         JBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        ID_Subject = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -49,18 +50,14 @@ public class MenuGrade extends javax.swing.JFrame {
         LabelStudent_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LabelStudent_ID.setText("STUDENT ID :");
 
-        LabelSubject_id.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelSubject_id.setText("SUBJECT ID :");
-
         LabelGrade.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelGrade.setText(" GRADE :");
+        LabelGrade.setText("GRADE :");
 
         Submit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Submit.setText("SUBMIT");
         Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Submit.addActionListener(e -> {
             String stdIDInput = ID_Student.getText();
-            String subjectIDInput = ID_Subject.getText();
             String gradeInput = item_Grade.getSelectedItem().toString();
             try{
                 connection = SQLConnection.getConnection2();
@@ -71,21 +68,15 @@ public class MenuGrade extends javax.swing.JFrame {
                     return;
                 }
 
-                if (!hasRegistered(stdIDInput, subjectIDInput)){
-                    String msg = String.format("%s hasn't registered %s", stdIDInput, subjectIDInput);
-                    JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                if (!doesTeach(subjectIDInput)){
-                    String msg = String.format("%s doesn't teach %s", Login.teacherId, subjectIDInput);
+                if (!hasRegistered(stdIDInput, Login.subjectID)){
+                    String msg = String.format("%s hasn't registered %s", stdIDInput, Login.subjectID);
                     JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                     
-                String query = String.format("UPDATE registration SET grade = \"%s\" WHERE std_id = \"%s\" AND subject_id = \"%s\";", gradeInput, stdIDInput, subjectIDInput);
+                String query = String.format("UPDATE registration SET grade = \"%s\" WHERE std_id = \"%s\" AND subject_id = \"%s\";", gradeInput, stdIDInput, Login.subjectID);
                 statement.executeUpdate(query);
-                String msg = String.format("Submitted Grade %s to %s (%s)", gradeInput, stdIDInput, subjectIDInput);
+                String msg = String.format("Submitted Grade %s to %s (%s)", gradeInput, stdIDInput, Login.subjectID);
                 JOptionPane.showMessageDialog(this, msg, "Successful submission", JOptionPane.INFORMATION_MESSAGE);
 
             }catch (SQLException except){
@@ -149,19 +140,16 @@ public class MenuGrade extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(135, 135, 135)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelStudent_ID)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(LabelGrade)
-                        .addComponent(LabelSubject_id)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LabelGrade)
+                    .addComponent(LabelStudent_ID))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(item_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                         .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ID_Student)
-                    .addComponent(ID_Subject, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ID_Student))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -172,16 +160,12 @@ public class MenuGrade extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelStudent_ID)
                     .addComponent(ID_Student, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelSubject_id)
-                    .addComponent(ID_Subject, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelGrade)
                     .addComponent(item_Grade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -194,7 +178,7 @@ public class MenuGrade extends javax.swing.JFrame {
         backmenu.pack();
         backmenu.setLocationRelativeTo(null);
         this.dispose();
-    }
+    }                                     
 
     public boolean doesExists(String std_id) throws SQLException{
         Statement statement = connection.  createStatement();
@@ -210,16 +194,10 @@ public class MenuGrade extends javax.swing.JFrame {
         return rs.next();
     }
 
-    public boolean doesTeach(String subject_id) throws SQLException {
-        Statement statement = connection.  createStatement();
-        String fectchStdQuery = String.format("SELECT teacher_id, subject_id FROM teachers WHERE teacher_id = \"%s\" AND subject_id = \"%s\"", Login.teacherId, subject_id);
-        ResultSet rs = statement.executeQuery(fectchStdQuery);
-        return rs.next();
-}
-
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -255,11 +233,9 @@ public class MenuGrade extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JTextField ID_Student;
-    private javax.swing.JTextField ID_Subject;
     private javax.swing.JButton JBack;
     private javax.swing.JLabel LabelGrade;
     private javax.swing.JLabel LabelStudent_ID;
-    private javax.swing.JLabel LabelSubject_id;
     private javax.swing.JButton Submit;
     private javax.swing.JComboBox<String> item_Grade;
     private javax.swing.JPanel jPanel1;
