@@ -8,7 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-
+import java.util.List;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -98,11 +99,11 @@ public class AddHomeWork extends javax.swing.JFrame {
             .addGap(0, 35, Short.MAX_VALUE)
         );
 
-        LabelStudent_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelStudent_ID.setText(" STUDENT ID :");
+        // LabelStudent_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        // LabelStudent_ID.setText(" STUDENT ID :");
 
-        LabelSubject_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelSubject_ID.setText("SUBJECT ID :");
+        // LabelSubject_ID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        // LabelSubject_ID.setText("SUBJECT ID :");
 
         jLabelDescription.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelDescription.setText("DESCRIPTION :");
@@ -116,35 +117,34 @@ public class AddHomeWork extends javax.swing.JFrame {
         jButtonSubmit.addActionListener(e -> {
             LocalDate assignedDate = LocalDate.now();
             String dueDate = jTextDate.getText();
-            String subjectID = jTextSJ_ID.getText();
+            // String subjectID = jTextSJ_ID.getText();
             String description = jTextDC.getText();
-            String assignedToStd = jTextST_ID.getText();
+            // String assignedToStd = jTextST_ID.getText();
             String assignedByTeacher = Login.teacherId;
             try{
-                connection = SQLConnection.getConnection2();
+                connection = SQLConnection.getConnection1();
                 Statement statement = connection.createStatement();
 
-                if (!doesExist(assignedToStd)){
-                    JOptionPane.showMessageDialog(this, "Unknown student ID", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                if (!hasRegistered(assignedToStd, subjectID)){
-                    String msg = String.format("%s hasn't registered %s", assignedToStd, subjectID);
+                if (!doesTeach(Login.subjectID)){ 
+                    String msg = String.format("%s doesn't teach %s", Login.teacherId, Login.subjectID);
                     JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                
+                String fetchRegisteredStd = String.format("SELECT registration.std_id FROM registration JOIN students ON REGISTRATION.std_id = students.std_id WHERE REGISTRATION.subject_id = \"%s\";", Login.subjectID);
+                ResultSet registeredStd = statement.executeQuery(fetchRegisteredStd);
+                List<String>stdIDs = new ArrayList<>(); 
 
-                if (!doesTeach(subjectID)){
-                    String msg = String.format("%s doesn't teach %s", Login.teacherId, subjectID);
-                    JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                while (registeredStd.next()){
+                    String fetched_stdID = registeredStd.getString("registration.std_id");
+                    stdIDs.add(fetched_stdID);
                 }
 
-                String query = String.format("INSERT INTO homework (assigned_date, due_date, subject_id, description, assigned_to_std, assigned_by_teacher) VALUES (\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")", assignedDate, dueDate, subjectID, description, assignedToStd, assignedByTeacher);
-                statement.executeUpdate(query);
-                String msg = String.format("(%s) %s assigned %s to %s (due %s)", assignedDate, assignedByTeacher, subjectID,  assignedToStd, dueDate);
-                JOptionPane.showMessageDialog(this, msg, "Success", JOptionPane.INFORMATION_MESSAGE);
+                for (String stdID : stdIDs){
+                    String query = String.format("INSERT INTO homework (assigned_date, due_date, subject_id, description, assigned_to_std, assigned_by_teacher) VALUES (\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")", assignedDate, dueDate, Login.subjectID, description, stdID, assignedByTeacher);
+                    statement.executeUpdate(query);
+                }
+                JOptionPane.showMessageDialog(this, "Added", "Success", JOptionPane.INFORMATION_MESSAGE);
             }catch (SQLException exept) {
                 exept.printStackTrace();
             }
@@ -203,6 +203,9 @@ public class AddHomeWork extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jTextSJ_ID.setVisible(false);
+        jTextST_ID.setVisible(false);
+
         pack();
     }// </editor-fold>                        
 
@@ -213,20 +216,6 @@ public class AddHomeWork extends javax.swing.JFrame {
         backHW.pack();
         this.dispose();
     }   
-    
-    public boolean doesExist(String std_id) throws SQLException{
-        Statement statement = connection.  createStatement();
-        String fectchStdQuery = String.format("SELECT std_id FROM students WHERE std_id = \"%s\"", std_id);
-        ResultSet rs = statement.executeQuery(fectchStdQuery);
-        return rs.next();
-    }
-
-    public boolean hasRegistered(String std_id, String subject_id) throws SQLException {
-        Statement statement = connection.  createStatement();
-        String fectchStdQuery = String.format("SELECT std_id, subject_id FROM registration WHERE std_id = \"%s\" AND subject_id = \"%s\"", std_id, subject_id);
-        ResultSet rs = statement.executeQuery(fectchStdQuery);
-        return rs.next();
-    }
 
     public boolean doesTeach(String subject_id) throws SQLException {
             Statement statement = connection.  createStatement();
