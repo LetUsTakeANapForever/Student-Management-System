@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author G15
@@ -46,7 +53,7 @@ public class Delete extends javax.swing.JFrame {
         ButtonSM.setText("SUBMIT");
         ButtonSM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonSMActionPerformed(evt);
+                jButtonSubmit1ActionPerformed(evt);
             }
         });
 
@@ -129,10 +136,67 @@ public class Delete extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BackActionPerformed
 
-    private void ButtonSMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonSMActionPerformed
 
+    private void jButtonSubmit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        Connection connection = SQLConnection.getConnection2();
+         try {
+                 Statement statement = connection.createStatement();
+                 if(!subjectExists(jTextField_Subject_id.getText())){
+                     JOptionPane.showMessageDialog(this, "Wrong subject_id please try again", "Error", JOptionPane.ERROR_MESSAGE);
+                     return;
+                 }
+                 if (!hasRegistered(jTextField_Subject_id.getText())) {
+                     JOptionPane.showMessageDialog(this, "You have not registered this subject yet", "Error", JOptionPane.ERROR_MESSAGE);
+                     return;
+                 }
+                 
+                     String sql = String.format("DELETE FROM registration WHERE std_id = \"%S\" AND subject_id = \"%S\"",LoginStd.std_id,jTextField_Subject_id.getText());
+                     statement.executeUpdate(sql);
+                     JOptionPane.showMessageDialog(this,"Drop subject success","Success", JOptionPane.INFORMATION_MESSAGE);
+                 
+                 
+         } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         }
+     }
+     //GEN-LAST:event_jTextField1ActionPerformed
+     public boolean hasRegistered(String text){
+         Connection connection = SQLConnection.getConnection2();
+         try {
+             Statement statement = connection.createStatement();
+             String sql = String.format("SELECT all_subjects.subject_id,registration.std_id\r\n" + //
+                                 "FROM all_subjects JOIN registration \r\n" + //
+                                 "ON registration.subject_id = all_subjects.subject_id\r\n" + //
+                                 "WHERE registration.std_id = \"%S\"",LoginStd.std_id);
+             ResultSet resultSet = statement.executeQuery(sql);
+             while (resultSet.next()) {
+                 if (text.equals(resultSet.getString("subject_id"))) {
+                     return true;
+                 }
+             }
+             
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+         return false;    
+     }
+ 
+     public boolean subjectExists(String text){
+         try {
+             Connection connection = SQLConnection.getConnection2();
+             Statement statement = connection.createStatement();
+             String sql= String.format("SELECT subject_id FROM all_subjects WHERE subject_id = " + text);
+             ResultSet rs = statement.executeQuery(sql);
+             if (!rs.next())
+                return false;
+             return true;
+         } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+             return true;
+         }
+     }
     /**
      * @param args the command line arguments
      */
