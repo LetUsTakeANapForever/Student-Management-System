@@ -173,36 +173,38 @@ public class SeeGrade extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public void getGradeInfo(){
+        Map<String, Double> grades = new HashMap<>();
+        grades.put("A", 4.0);
+        grades.put("B+", 3.5);
+        grades.put("B", 3.0);
+        grades.put("C+", 2.5);
+        grades.put("C", 2.0);
+        grades.put("D+", 1.5);
+        grades.put("D", 1.0);
+        grades.put("F", 0.0);
+        double sumGrade=0.0;
+        double GPA = 0.0;
+        double allCredit = 0;
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"ID Subject", "Subject", "Grade"}, 0
+        );
+        DefaultTableModel model2 = new DefaultTableModel(
+            new String[]{"Cumulative credit", "Cumutive GPA"}, 0
+        );
         try{
         Connection connection = SQLConnection.getConnection2();
         Statement statement = connection.createStatement();
-        String sql = String.format("SELECT all_subjects.subject_name,registration.subject_id, students.std_id,REGISTRATION.grade FROM registration JOIN students ON REGISTRATION.std_id = students.std_id JOIN all_subjects ON REGISTRATION.subject_id = all_subjects.subject_id WHERE students.std_id = \"%s\" AND grade IS NOT NULL", LoginStd.std_id);
+        String sql = String.format("SELECT all_subjects.subject_name,registration.subject_id, students.std_id,REGISTRATION.grade FROM registration JOIN students ON REGISTRATION.std_id = students.std_id JOIN all_subjects ON REGISTRATION.subject_id = all_subjects.subject_id WHERE students.std_id = \"%s\" AND grade IS NOT NULL",LoginStd.std_id);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
-            Map<String, Double> grades = new HashMap<>();
-            grades.put("A", 4.0);
-            grades.put("B+", 3.5);
-            grades.put("B", 3.0);
-            grades.put("C+", 2.5);
-            grades.put("C", 2.0);
-            grades.put("D+", 1.5);
-            grades.put("D", 1.0);
-            grades.put("F", 0.0);
-            double sumGrade=0.0;
-            double GPA = 0.0;
-            double allCredit = 15.0;
-            DefaultTableModel model = new DefaultTableModel(
-                new String[]{"ID Subject", "Subject", "Grade"}, 0
-            );
-            DefaultTableModel model2 = new DefaultTableModel(
-                new String[]{"Cumulative credit", "Cumutive GPA"}, 0
-            );
             String subjectId = resultSet.getString("subject_id");
             String subjectName = resultSet.getString("subject_name");
             String grade = resultSet.getString("grade");
             model.addRow(new Object[]{subjectId, subjectName, grade});
             sumGrade += grades.get(resultSet.getString("grade"))*3;
+            allCredit+=3;
+        }   
             GPA = sumGrade/allCredit;
             String gpa  = String.format("%.2f",GPA);
             jTable2.setModel(model);
@@ -215,44 +217,6 @@ public class SeeGrade extends javax.swing.JFrame {
             jTable1.setRowHeight(30);
             jTable1.getTableHeader().setReorderingAllowed(false);
             jScrollPane1.setViewportView(jTable1);
-        }
-        if (!resultSet.next()){
-            jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID Subject", "Subject", "Grade"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-            });
-        }
     }catch(Exception e){
         System.out.println(e);
     }
@@ -302,3 +266,5 @@ public class SeeGrade extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
+message.txt
+13 KB
