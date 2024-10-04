@@ -63,7 +63,7 @@ public class MenuGrade extends javax.swing.JFrame {
             String subjectIDInput = ID_Subject.getText();
             String gradeInput = item_Grade.getSelectedItem().toString();
             try{
-                connection = SQLConnection.getConnection2();
+                connection = SQLConnection.getConnection1();
                 Statement statement = connection.createStatement();
                 
                 if (!doesExists(stdIDInput)){
@@ -73,6 +73,12 @@ public class MenuGrade extends javax.swing.JFrame {
 
                 if (!hasRegistered(stdIDInput, subjectIDInput)){
                     String msg = String.format("%s hasn't registered %s", stdIDInput, subjectIDInput);
+                    JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (!doesTeach(subjectIDInput)){
+                    String msg = String.format("%s doesn't teach %s", Login.teacherId, subjectIDInput);
                     JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -203,6 +209,13 @@ public class MenuGrade extends javax.swing.JFrame {
         ResultSet rs = statement.executeQuery(fectchStdQuery);
         return rs.next();
     }
+
+    public boolean doesTeach(String subject_id) throws SQLException {
+        Statement statement = connection.  createStatement();
+        String fectchStdQuery = String.format("SELECT teacher_id, subject_id FROM teachers WHERE teacher_id = \"%s\" AND subject_id = \"%s\"", Login.teacherId, subject_id);
+        ResultSet rs = statement.executeQuery(fectchStdQuery);
+        return rs.next();
+}
 
     /**
      * @param args the command line arguments

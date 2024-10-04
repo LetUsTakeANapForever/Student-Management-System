@@ -121,16 +121,22 @@ public class AddHomeWork extends javax.swing.JFrame {
             String assignedToStd = jTextST_ID.getText();
             String assignedByTeacher = Login.teacherId;
             try{
-                connection = SQLConnection.getConnection2();
+                connection = SQLConnection.getConnection1();
                 Statement statement = connection.createStatement();
 
-                if (!doesExists(assignedToStd)){
+                if (!doesExist(assignedToStd)){
                     JOptionPane.showMessageDialog(this, "Unknown student ID", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
                 if (!hasRegistered(assignedToStd, subjectID)){
                     String msg = String.format("%s hasn't registered %s", assignedToStd, subjectID);
+                    JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (!doesTeach(subjectID)){
+                    String msg = String.format("%s doesn't teach %s", Login.teacherId, subjectID);
                     JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -208,7 +214,7 @@ public class AddHomeWork extends javax.swing.JFrame {
         this.dispose();
     }   
     
-    public boolean doesExists(String std_id) throws SQLException{
+    public boolean doesExist(String std_id) throws SQLException{
         Statement statement = connection.  createStatement();
         String fectchStdQuery = String.format("SELECT std_id FROM students WHERE std_id = \"%s\"", std_id);
         ResultSet rs = statement.executeQuery(fectchStdQuery);
@@ -222,6 +228,12 @@ public class AddHomeWork extends javax.swing.JFrame {
         return rs.next();
     }
 
+    public boolean doesTeach(String subject_id) throws SQLException {
+            Statement statement = connection.  createStatement();
+            String fectchStdQuery = String.format("SELECT teacher_id, subject_id FROM teachers WHERE teacher_id = \"%s\" AND subject_id = \"%s\"", Login.teacherId, subject_id);
+            ResultSet rs = statement.executeQuery(fectchStdQuery);
+            return rs.next();
+    }
 
     /**
      * @param args the command line arguments
