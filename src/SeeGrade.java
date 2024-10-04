@@ -184,7 +184,7 @@ public class SeeGrade extends javax.swing.JFrame {
         grades.put("F", 0.0);
         double sumGrade=0.0;
         double GPA = 0.0;
-        double allCredit = 15.0;
+        double allCredit = 0;
         DefaultTableModel model = new DefaultTableModel(
             new String[]{"ID Subject", "Subject", "Grade"}, 0
         );
@@ -203,6 +203,7 @@ public class SeeGrade extends javax.swing.JFrame {
             String grade = resultSet.getString("grade");
             model.addRow(new Object[]{subjectId, subjectName, grade});
             sumGrade += grades.get(resultSet.getString("grade"))*3;
+            allCredit+=3;
         }   
             GPA = sumGrade/allCredit;
             String gpa  = String.format("%.2f",GPA);
