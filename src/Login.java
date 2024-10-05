@@ -20,6 +20,8 @@ import javax.swing.*;
 public class Login extends javax.swing.JFrame {
     static String teacherName;
     static String teacherId;
+    static String subjectName;
+    static String subjectID;
     /**
      * Creates new form Login
      */
@@ -370,7 +372,7 @@ public class Login extends javax.swing.JFrame {
     }
     public boolean checkAccount(String id, String password){
         try{
-            Connection connection = SQLConnection.getConnection2();
+            Connection connection = SQLConnection.getConnection1();
             Statement statement = connection.createStatement();
 
             String sql = String.format("SELECT teacher_id, teacher_password FROM teachers WHERE teacher_id = \"%s\" AND teacher_password = \"%s\"",id,password);
@@ -382,16 +384,18 @@ public class Login extends javax.swing.JFrame {
             return false;
         }
     }
-    public String getUserInfo(String ID){
+     public String getUserInfo(String ID){
         try{
-        Connection connection = SQLConnection.getConnection2();
+        Connection connection = SQLConnection.getConnection1();
         Statement statement = connection.createStatement();
-        String sql = String.format("SELECT teacher_id,teacher_firstname,teacher_lastname FROM teachers WHERE teacher_id=\"%s\"",ID);
+        String sql = String.format("SELECT * FROM teachers JOIN all_subjects ON teachers.subject_id = all_subjects.subject_id WHERE teachers.teacher_id =\"%s\"",ID);
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()){
             if(ID.equals(resultSet.getString("teacher_id"))){
+                subjectID = resultSet.getString("subject_id");
                 teacherId = resultSet.getString("teacher_id");
-                return resultSet.getString("teacher_firstname")+" "+resultSet.getString("teacher_lastname")+" "+resultSet.getString("teacher_id")+" (TEACHER)";
+                subjectName = resultSet.getString("all_subjects.subject_name");
+                return teacherId +" "+resultSet.getString("teacher_firstname")+" "+resultSet.getString("teacher_lastname")+" "+subjectName;
             }
         }
         }catch(Exception e){

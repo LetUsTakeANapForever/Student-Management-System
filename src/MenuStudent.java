@@ -33,7 +33,7 @@ public class MenuStudent extends javax.swing.JFrame {
         this.IconHomeWorkStd.setBorderPainted(false);
         this.IconHomeWorkStd.setFocusPainted(false);
         this.IconHomeWorkStd.setContentAreaFilled(false);
-        
+
         this.IconViewAllcourses.setBorderPainted(false);
         this.IconViewAllcourses.setFocusPainted(false);
         this.IconViewAllcourses.setContentAreaFilled(false);
@@ -51,19 +51,19 @@ public class MenuStudent extends javax.swing.JFrame {
         this.SeeHMStd.setContentAreaFilled(false);
     }
     public void Icon(){
-                ImageIcon icon = new ImageIcon("C:\\PicturePJ\\2641409.png");
+        ImageIcon icon = new ImageIcon("src/pics/2641409.png");
                 Image img = icon.getImage();
                 Image resizedImg = img.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon = new ImageIcon(resizedImg);
                 this.IconSeeGrade.setIcon(resizedIcon);
                 
-                ImageIcon icon2 = new ImageIcon("C:\\PicturePJ\\online-course-icon-style-free-vector.png");
+               ImageIcon icon2 = new ImageIcon("src\\pics\\online-course-icon-style-free-vector.png");
                 Image img2 = icon2.getImage();
                 Image resizedImg2 = img2.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon2 = new ImageIcon(resizedImg2);
                 this.IconViewAllcourses.setIcon(resizedIcon2);
                 
-                ImageIcon icon3 = new ImageIcon("C:\\PicturePJ\\ImageIcon2.png");
+                ImageIcon icon3 = new ImageIcon("src\\pics\\ImageIcon2.png");
                 Image img3 = icon3.getImage();
                 Image resizedImg3 = img3.getScaledInstance(140, 120, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon3 = new ImageIcon(resizedImg3);
