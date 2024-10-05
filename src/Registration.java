@@ -250,7 +250,11 @@ public class Registration extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void ShowBoxActionPerformed(java.awt.event.ActionEvent evt) {
-
+        if (ShowBox.isSelected()) {
+            TextFieldNewPass.setEchoChar((char) 0);
+        } else {
+            TextFieldNewPass.setEchoChar('*');
+        }
     }
 
     private void TextFieldFirstnameActionPerformed(java.awt.event.ActionEvent evt) {
