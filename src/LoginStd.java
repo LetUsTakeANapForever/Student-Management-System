@@ -184,7 +184,8 @@ public class LoginStd extends javax.swing.JFrame {
         GotoRegistration.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         GotoRegistration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GotoRegisStdActionPerformed(evt);
+                new Registration().setVisible(true);
+                dispose();
             }
         });
 

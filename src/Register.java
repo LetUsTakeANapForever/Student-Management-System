@@ -182,6 +182,11 @@ public class Register extends javax.swing.JFrame {
         Back.setForeground(new java.awt.Color(255, 255, 255));
         Back.setText("BACK");
 
+        Back.addActionListener(e -> {
+            new MenuStudent().setVisible(true);
+            this.dispose();
+        });
+
         Add.setBackground(new java.awt.Color(0, 102, 102));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Add.setForeground(new java.awt.Color(255, 255, 255));
