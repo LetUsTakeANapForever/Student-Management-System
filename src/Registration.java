@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-
 public class Registration extends javax.swing.JFrame {
     public Registration() {
         initComponents();
@@ -15,11 +14,11 @@ public class Registration extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.WHITE);
     }
 
-    private void IconFrame(){
+    private void IconFrame() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("2118256.png")));
-        
+
     }
-                             
+
     private void initComponents() {
 
         Topblock = new javax.swing.JPanel();
@@ -59,19 +58,19 @@ public class Registration extends javax.swing.JFrame {
         javax.swing.GroupLayout TopblockLayout = new javax.swing.GroupLayout(Topblock);
         Topblock.setLayout(TopblockLayout);
         TopblockLayout.setHorizontalGroup(
-            TopblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TopblockLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackBT, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                TopblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(TopblockLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(BackBT, javax.swing.GroupLayout.PREFERRED_SIZE, 94,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         TopblockLayout.setVerticalGroup(
-            TopblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TopblockLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(BackBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+                TopblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(TopblockLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(BackBT, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(14, Short.MAX_VALUE)));
 
         Downblock.setBackground(new java.awt.Color(12, 137, 112));
         Downblock.setPreferredSize(new java.awt.Dimension(0, 30));
@@ -79,13 +78,11 @@ public class Registration extends javax.swing.JFrame {
         javax.swing.GroupLayout DownblockLayout = new javax.swing.GroupLayout(Downblock);
         Downblock.setLayout(DownblockLayout);
         DownblockLayout.setHorizontalGroup(
-            DownblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+                DownblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE));
         DownblockLayout.setVerticalGroup(
-            DownblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
+                DownblockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 30, Short.MAX_VALUE));
 
         BGUi.setBackground(new java.awt.Color(234, 234, 234));
 
@@ -146,128 +143,150 @@ public class Registration extends javax.swing.JFrame {
         javax.swing.GroupLayout BGUiLayout = new javax.swing.GroupLayout(BGUi);
         BGUi.setLayout(BGUiLayout);
         BGUiLayout.setHorizontalGroup(
-            BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGUiLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGUiLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(93, 93, 93))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGUiLayout.createSequentialGroup()
-                        .addGroup(BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TextFieldNewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TextPass)
-                            .addComponent(TextUser)
-                            .addComponent(ShowBox)
-                            .addComponent(TextFieldNewPass, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                            .addComponent(TextSurname)
-                            .addComponent(TextFieldSurname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TextFirst)
-                            .addComponent(TextFieldFirstname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(61, 61, 61))))
-            .addGroup(BGUiLayout.createSequentialGroup()
-                .addGroup(BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BGUiLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(SignUpBT))
-                    .addGroup(BGUiLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel1)))
-                .addGap(0, 83, Short.MAX_VALUE))
-        );
+                BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGUiLayout.createSequentialGroup()
+                                .addContainerGap(63, Short.MAX_VALUE)
+                                .addGroup(BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                BGUiLayout.createSequentialGroup()
+                                                        .addComponent(jLabel2)
+                                                        .addGap(93, 93, 93))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGUiLayout
+                                                .createSequentialGroup()
+                                                .addGroup(BGUiLayout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING,
+                                                                false)
+                                                        .addComponent(TextFieldNewUser,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(TextPass)
+                                                        .addComponent(TextUser)
+                                                        .addComponent(ShowBox)
+                                                        .addComponent(TextFieldNewPass,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 248,
+                                                                Short.MAX_VALUE)
+                                                        .addComponent(TextSurname)
+                                                        .addComponent(TextFieldSurname,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(TextFirst)
+                                                        .addComponent(TextFieldFirstname,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(61, 61, 61))))
+                        .addGroup(BGUiLayout.createSequentialGroup()
+                                .addGroup(BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(BGUiLayout.createSequentialGroup()
+                                                .addGap(131, 131, 131)
+                                                .addComponent(SignUpBT))
+                                        .addGroup(BGUiLayout.createSequentialGroup()
+                                                .addGap(83, 83, 83)
+                                                .addComponent(jLabel1)))
+                                .addGap(0, 83, Short.MAX_VALUE)));
         BGUiLayout.setVerticalGroup(
-            BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BGUiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(TextFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextFieldFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextFieldSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(TextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextFieldNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextPass, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextFieldNewPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ShowBox)
-                .addGap(28, 28, 28)
-                .addComponent(SignUpBT)
-                .addGap(24, 24, 24))
-        );
+                BGUiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BGUiLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26,
+                                        Short.MAX_VALUE)
+                                .addComponent(TextFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 8,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextFieldFirstname, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TextSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 8,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextFieldSurname, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(TextUser, javax.swing.GroupLayout.PREFERRED_SIZE, 8,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextFieldNewUser, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TextPass, javax.swing.GroupLayout.PREFERRED_SIZE, 8,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextFieldNewPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ShowBox)
+                                .addGap(28, 28, 28)
+                                .addComponent(SignUpBT)
+                                .addGap(24, 24, 24)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Topblock, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-            .addComponent(Downblock, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(BGUi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Topblock, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                        .addComponent(Downblock, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(BGUi, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(73, Short.MAX_VALUE)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Topblock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(BGUi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Downblock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(Topblock, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25,
+                                        Short.MAX_VALUE)
+                                .addComponent(BGUi, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Downblock, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }// </editor-fold>
 
-    private void ShowBoxActionPerformed(java.awt.event.ActionEvent evt) {                                        
-       
-    }                                     
-    private void TextFieldFirstnameActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        
-    }
-    private void TextFieldSurnameActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        
-    } 
-    private void TextFieldNewUserActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        
+    private void ShowBoxActionPerformed(java.awt.event.ActionEvent evt) {
+
     }
 
-    private void TextFieldNewPassActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        
-    }                                                
+    private void TextFieldFirstnameActionPerformed(java.awt.event.ActionEvent evt) {
 
-    private void BackBTActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    }
+
+    private void TextFieldSurnameActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
+    private void TextFieldNewUserActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
+    private void TextFieldNewPassActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
+    private void BackBTActionPerformed(java.awt.event.ActionEvent evt) {
         LoginStd LoginStd = new LoginStd();
         LoginStd.setVisible(true);
         LoginStd.pack();
         LoginStd.setLocationRelativeTo(null);
         this.dispose();
-    }                                      
+    }
 
-    private void SignUpBTActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        if(isValidInput()){
-            SignUP();
-            Login login =new Login();
+    private void SignUpBTActionPerformed(java.awt.event.ActionEvent evt) {
+        if (isValidInput() && SignUP()) {
+            Login login = new Login();
             login.setVisible(true);
             login.pack();
             login.setLocationRelativeTo(null);
             this.dispose();
         }
-        else{
-            JOptionPane.showMessageDialog(Registration.this,"Try Again","FAILED TO REGSITER",JOptionPane.WARNING_MESSAGE);
-        }
-    }                                        
+    }
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -277,81 +296,84 @@ public class Registration extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Registration().setVisible(true);
             }
         });
     }
-    public void SignUP(){
+
+    public boolean SignUP() {
         String userID = TextFieldNewUser.getText();
         char checkFirstLetter = userID.charAt(0);
         String password = new String(TextFieldNewPass.getPassword());
-        if(checkFirstLetter =='b'||checkFirstLetter=='t'){
-            if(checkFirstLetter == 'b' && TextFieldNewUser.getText().length()==11){
+
+        if (!isValidID(checkFirstLetter, userID)) {
+            JOptionPane.showMessageDialog(Registration.this, "Invalid input", "Error",
+                    JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (checkFirstLetter == 'b') {
             try {
-                Connection connection = SQLConnection.getConnection3();
-                String sql = String.format("INSERT INTO students (std_id, std_password, std_firstname, std_lastname) VALUES (\"%s\",\"%s\",\"%s\",\"%s\")",TextFieldNewUser.getText(),password,TextFieldFirstname.getText(),TextFieldSurname.getText());
+                Connection connection = SQLConnection.getConnection1();
+                String sql = String.format(
+                        "INSERT INTO students (std_id, std_password, std_firstname, std_lastname) VALUES (\"%s\",\"%s\",\"%s\",\"%s\")",
+                        TextFieldNewUser.getText(), password, TextFieldFirstname.getText(), TextFieldSurname.getText());
                 Statement statement = connection.createStatement();
                 int checkRowInsert = statement.executeUpdate(sql);
-                if(checkRowInsert>0){
-                    JOptionPane.showMessageDialog(Registration.this,"Success!","Success Register",JOptionPane.INFORMATION_MESSAGE);
+                if (checkRowInsert > 0) {
+                    JOptionPane.showMessageDialog(Registration.this, "Success!", "Success Register",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return true;
+                } else {
+                    System.out.println("failed");
+                    return false;
                 }
-                else System.out.println("failed");
-            } 
-            catch (Exception e) {
-                // TODO: handle exception
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
             }
-            else{
-                if(TextFieldNewUser.getText().length()<11){
-                    JOptionPane.showMessageDialog(Registration.this,"Too Short!","Short",JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-                else if(TextFieldNewUser.getText().length()>11){
-                    JOptionPane.showMessageDialog(Registration.this,"Too Long!","Long",JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-            }
-            if(checkFirstLetter == 't'&& TextFieldNewUser.getText().length()==5){
-                try {
-                    Connection connection = SQLConnection.getConnection1();
-                    String sql = String.format("INSERT INTO teachers (teacher_id, teacher_password, teacher_firstname, teacher_lastname) VALUES (\"%s\",\"%s\",\"%s\",\"%s\")",TextFieldNewUser.getText(),password,TextFieldFirstname.getText(),TextFieldSurname.getText());
-                    Statement statement = connection.createStatement();
-                    int checkRowInsert = statement.executeUpdate(sql);
-                    if(checkRowInsert>0){
-                        JOptionPane.showMessageDialog(Registration.this,"Success!","Success Register",JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else System.out.println("failed");
-                } 
-                catch (Exception e) {
-                    // TODO: handle exception
-                    }
-            }
-            else{
-                if(TextFieldNewUser.getText().length()<5){
-                    JOptionPane.showMessageDialog(Registration.this,"Too Short!","Short",JOptionPane.INFORMATION_MESSAGE);
-                    return;    
-                }
-                else if(TextFieldNewUser.getText().length()>5){
-                    JOptionPane.showMessageDialog(Registration.this,"Too Long!","Long",JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-            }
+        }
 
-        }else JOptionPane.showMessageDialog(Registration.this, "Can't Identify","Can't Identify",JOptionPane.WARNING_MESSAGE);
+        else if (checkFirstLetter == 't') {
+            try {
+                Connection connection = SQLConnection.getConnection1();
+                String sql = String.format(
+                        "INSERT INTO teachers (teacher_id, teacher_password, teacher_firstname, teacher_lastname) VALUES (\"%s\",\"%s\",\"%s\",\"%s\")",
+                        TextFieldNewUser.getText(), password, TextFieldFirstname.getText(), TextFieldSurname.getText());
+                Statement statement = connection.createStatement();
+                int checkRowInsert = statement.executeUpdate(sql);
+                if (checkRowInsert > 0) {
+                    JOptionPane.showMessageDialog(Registration.this, "Success!", "Success Register",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return true;
+                } else{
+                    System.out.println("failed");
+                    return false;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
     }
-    
-    public boolean isValidInput(){
+
+    public boolean isValidInput() {
         try {
             String password = new String(TextFieldNewPass.getPassword());
             Connection connection = SQLConnection.getConnection1();
@@ -359,34 +381,46 @@ public class Registration extends javax.swing.JFrame {
             String sql = "SELECT std_id FROM students";
 
             ResultSet resultSet = statement.executeQuery(sql);
-            if(TextFieldFirstname.getText().trim().isEmpty()||TextFieldFirstname.getText().matches("[!0-9]+")){
-                JOptionPane.showMessageDialog(Registration.this, "FirstName is empty or contain number", "Empty Surname or Contain Number", JOptionPane.WARNING_MESSAGE);
+            if (TextFieldFirstname.getText().trim().isEmpty() || TextFieldFirstname.getText().matches("[!0-9]+")) {
+                JOptionPane.showMessageDialog(Registration.this, "FirstName is empty or contain number",
+                        "Empty Surname or Contain Number", JOptionPane.WARNING_MESSAGE);
                 return false;
-            }
-            else if(TextFieldSurname.getText().trim().isEmpty()||TextFieldSurname.getText().matches("[!0-9]+")){
-                JOptionPane.showMessageDialog(Registration.this, "Surname is empty or contain number", "Empty Surname or Contain Number", JOptionPane.WARNING_MESSAGE);
+            } else if (TextFieldSurname.getText().trim().isEmpty() || TextFieldSurname.getText().matches("[!0-9]+")) {
+                JOptionPane.showMessageDialog(Registration.this, "Surname is empty or contain number",
+                        "Empty Surname or Contain Number", JOptionPane.WARNING_MESSAGE);
                 return false;
-            }
-            else if(TextFieldNewUser.getText().trim().isEmpty()){
-                JOptionPane.showMessageDialog(Registration.this, "UserID is empty", "Empty UserID", JOptionPane.WARNING_MESSAGE);
+            } else if (TextFieldNewUser.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(Registration.this, "UserID is empty", "Empty UserID",
+                        JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             while (resultSet.next()) {
-                if(TextFieldNewUser.getText().equals(resultSet.getString("std_id"))){
-                JOptionPane.showMessageDialog(Registration.this, "UserID already existed", "Duplicate UserID", JOptionPane.WARNING_MESSAGE);
-                return false;
+                if (TextFieldNewUser.getText().equals(resultSet.getString("std_id"))) {
+                    JOptionPane.showMessageDialog(Registration.this, "UserID already existed", "Duplicate UserID",
+                            JOptionPane.WARNING_MESSAGE);
+                    return false;
                 }
             }
-            if(password.trim().isEmpty()){
-                JOptionPane.showMessageDialog(Registration.this, "Password is empty", "PasswordField is empty", JOptionPane.WARNING_MESSAGE);
+            if (password.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(Registration.this, "Password is empty", "PasswordField is empty",
+                        JOptionPane.WARNING_MESSAGE);
                 return false;
             }
-        
+
         } catch (Exception e) {
             System.out.println(e);
             return false;
         }
         return true;
+    }
+
+    public boolean isValidID(char checkFirstLetter, String userID) {
+        if (checkFirstLetter == 'b' && TextFieldNewUser.getText().length() == 11) {
+            return true;
+        } else if (checkFirstLetter == 't' && TextFieldNewUser.getText().length() == 5) {
+            return true;
+        }
+        return false;
     }
 
     private javax.swing.JPanel BGUi;
