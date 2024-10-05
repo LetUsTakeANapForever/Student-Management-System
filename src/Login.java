@@ -201,7 +201,8 @@ public class Login extends javax.swing.JFrame {
         GoToRegistration.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         GoToRegistration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GoToRegistrationActionPerformed(evt);
+                new Registration().setVisible(true);
+                dispose();
             }
         });
 
