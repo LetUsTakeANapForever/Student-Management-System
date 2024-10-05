@@ -62,6 +62,7 @@ public class Login extends javax.swing.JFrame {
         showbox = new javax.swing.JCheckBox();
         SwarptoStudent = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        GoToRegistration = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -195,34 +196,51 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        GoToRegistration.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        GoToRegistration.setText("Registration");
+        GoToRegistration.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        GoToRegistration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                new Registration().setVisible(true);
+                dispose();
+            }
+        });
+
         javax.swing.GroupLayout BGPanelLayout = new javax.swing.GroupLayout(BGPanel);
         BGPanel.setLayout(BGPanelLayout);
         BGPanelLayout.setHorizontalGroup(
             BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BGPanelLayout.createSequentialGroup()
-                .addComponent(BG, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
+                .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(BGPanelLayout.createSequentialGroup()
-                        .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(line1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(SwarptoStudent, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(line2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(GoToRegistration))
+                    .addGroup(BGPanelLayout.createSequentialGroup()
+                        .addComponent(BG, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BGPanelLayout.createSequentialGroup()
+                                .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(line1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BGPanelLayout.createSequentialGroup()
+                                        .addComponent(SwarptoStudent)
+                                        .addGap(9, 9, 9))
+                                    .addComponent(line2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TITLE, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
-                                        .addComponent(LOGINTEXT)
-                                        .addGap(22, 22, 22)))
-                                .addGap(45, 45, 45))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
-                                .addComponent(Directiontext)
-                                .addGap(44, 44, 44))))
-                    .addComponent(Fieldpassanduser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TITLE, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
+                                                .addComponent(LOGINTEXT)
+                                                .addGap(22, 22, 22)))
+                                        .addGap(45, 45, 45))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BGPanelLayout.createSequentialGroup()
+                                        .addComponent(Directiontext)
+                                        .addGap(44, 44, 44))))
+                            .addComponent(Fieldpassanduser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -249,8 +267,10 @@ public class Login extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(Fieldpassanduser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SwarptoStudent)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                        .addGroup(BGPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(SwarptoStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(GoToRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -266,7 +286,7 @@ public class Login extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }
 //ShowPassword
     private void showboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showboxActionPerformed
         if (showbox.isSelected()) {
@@ -392,6 +412,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Directiontext;
     private javax.swing.JTextField FieldUser;
     private javax.swing.JPanel Fieldpassanduser;
+    private javax.swing.JButton GoToRegistration;
     private javax.swing.JLabel LOGINTEXT;
     private javax.swing.JButton LoginBT;
     private javax.swing.JPasswordField Passwordfield;
