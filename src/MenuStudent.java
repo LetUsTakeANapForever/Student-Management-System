@@ -33,6 +33,14 @@ public class MenuStudent extends javax.swing.JFrame {
         this.IconHomeWorkStd.setBorderPainted(false);
         this.IconHomeWorkStd.setFocusPainted(false);
         this.IconHomeWorkStd.setContentAreaFilled(false);
+
+        this.IconViewAllcourses.setBorderPainted(false);
+        this.IconViewAllcourses.setFocusPainted(false);
+        this.IconViewAllcourses.setContentAreaFilled(false);
+        
+        this.ViewAllCourseStd.setBorderPainted(false);
+        this.ViewAllCourseStd.setFocusPainted(false);
+        this.ViewAllCourseStd.setContentAreaFilled(false);
         
         this.CheckGrade.setBorderPainted(false);
         this.CheckGrade.setFocusPainted(false);
@@ -49,11 +57,17 @@ public class MenuStudent extends javax.swing.JFrame {
                 ImageIcon resizedIcon = new ImageIcon(resizedImg);
                 this.IconSeeGrade.setIcon(resizedIcon);
                 
-                ImageIcon icon2 = new ImageIcon("src/pics/ImageIcon2.png");
+               ImageIcon icon2 = new ImageIcon("C:\\PicturePJ\\online-course-icon-style-free-vector.png");
                 Image img2 = icon2.getImage();
-                Image resizedImg2 = img2.getScaledInstance(140, 120, java.awt.Image.SCALE_SMOOTH);
+                Image resizedImg2 = img2.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon resizedIcon2 = new ImageIcon(resizedImg2);
-                this.IconHomeWorkStd.setIcon(resizedIcon2);
+                this.IconViewAllcourses.setIcon(resizedIcon2);
+                
+                ImageIcon icon3 = new ImageIcon("C:\\PicturePJ\\ImageIcon2.png");
+                Image img3 = icon3.getImage();
+                Image resizedImg3 = img3.getScaledInstance(140, 120, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon resizedIcon3 = new ImageIcon(resizedImg3);
+                this.IconHomeWorkStd.setIcon(resizedIcon3);
     }
     
     
@@ -75,6 +89,8 @@ public class MenuStudent extends javax.swing.JFrame {
         IconHomeWorkStd = new javax.swing.JButton();
         CheckGrade = new javax.swing.JButton();
         SeeHMStd = new javax.swing.JButton();
+        IconViewAllcourses = new javax.swing.JButton();
+        ViewAllCourseStd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -181,6 +197,23 @@ public class MenuStudent extends javax.swing.JFrame {
             }
         });
 
+        IconViewAllcourses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IconViewAllcourses.setPreferredSize(new java.awt.Dimension(140, 120));
+        IconViewAllcourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IconViewAllcoursesActionPerformed(evt);
+            }
+        });
+
+        ViewAllCourseStd.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        ViewAllCourseStd.setText("VIEW ALL COURSES");
+        ViewAllCourseStd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ViewAllCourseStd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewAllCourseStdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,33 +223,40 @@ public class MenuStudent extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(IconViewAllcourses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(IconHomeWorkStd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(IconSeeGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CheckGrade)
-                    .addComponent(SeeHMStd))
-                .addContainerGap(164, Short.MAX_VALUE))
+                    .addComponent(SeeHMStd)
+                    .addComponent(ViewAllCourseStd))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IconSeeGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(IconSeeGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(30, 30, 30)
                         .addComponent(CheckGrade)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(IconHomeWorkStd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
+                        .addComponent(IconViewAllcourses, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(ViewAllCourseStd)
+                        .addGap(62, 62, 62)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IconHomeWorkStd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(SeeHMStd)
-                        .addGap(88, 88, 88)))
+                        .addGap(26, 26, 26)))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -233,7 +273,7 @@ public class MenuStudent extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }
     
     private void LogoutbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutbottonActionPerformed
         Login LoginTHR = new Login();
@@ -285,6 +325,22 @@ public class MenuStudent extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_SeeHMStdActionPerformed
 
+    private void IconViewAllcoursesActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        Register GotoRegister = new Register();
+        GotoRegister.setVisible(true);
+        GotoRegister.pack();
+        GotoRegister.setLocationRelativeTo(null);
+        this.dispose();
+    }
+
+    private void ViewAllCourseStdActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        Register GotoRegister = new Register();
+        GotoRegister.setVisible(true);
+        GotoRegister.pack();
+        GotoRegister.setLocationRelativeTo(null);
+        this.dispose();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -324,8 +380,10 @@ public class MenuStudent extends javax.swing.JFrame {
     private javax.swing.JButton CheckGrade;
     private javax.swing.JButton IconHomeWorkStd;
     private javax.swing.JButton IconSeeGrade;
+    private javax.swing.JButton IconViewAllcourses;
     private javax.swing.JButton Logoutbotton;
     private javax.swing.JButton SeeHMStd;
+    private javax.swing.JButton ViewAllCourseStd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
