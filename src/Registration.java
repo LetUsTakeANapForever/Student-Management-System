@@ -8,6 +8,9 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Registration extends javax.swing.JFrame {
+    static Connection connection = SQLConnection.getConnection1();
+    static String teacherID;
+
     public Registration() {
         initComponents();
         IconFrame();
@@ -326,22 +329,20 @@ public class Registration extends javax.swing.JFrame {
         String password = new String(TextFieldNewPass.getPassword());
 
         if (!isValidID(checkFirstLetter, userID)) {
-            JOptionPane.showMessageDialog(Registration.this, "Invalid input", "Error",
+            JOptionPane.showMessageDialog(Registration.this, "Invalid ID Format", "Error",
                     JOptionPane.WARNING_MESSAGE);
             return false;
         }
 
         if (checkFirstLetter == 'b') {
             try {
-                Connection connection = SQLConnection.getConnection1();
                 String sql = String.format(
                         "INSERT INTO students (std_id, std_password, std_firstname, std_lastname) VALUES (\"%s\",\"%s\",\"%s\",\"%s\")",
                         TextFieldNewUser.getText(), password, TextFieldFirstname.getText(), TextFieldSurname.getText());
                 Statement statement = connection.createStatement();
                 int checkRowInsert = statement.executeUpdate(sql);
                 if (checkRowInsert > 0) {
-                    JOptionPane.showMessageDialog(Registration.this, "Success!", "Success Register",
-                            JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(Registration.this, "Success!", "Success Register", JOptionPane.INFORMATION_MESSAGE);
                     return true;
                 } else {
                     System.out.println("failed");
@@ -355,16 +356,17 @@ public class Registration extends javax.swing.JFrame {
 
         else if (checkFirstLetter == 't') {
             try {
-                Connection connection = SQLConnection.getConnection1();
+                teacherID = TextFieldNewUser.getText();
                 String sql = String.format(
                         "INSERT INTO teachers (teacher_id, teacher_password, teacher_firstname, teacher_lastname) VALUES (\"%s\",\"%s\",\"%s\",\"%s\")",
                         TextFieldNewUser.getText(), password, TextFieldFirstname.getText(), TextFieldSurname.getText());
                 Statement statement = connection.createStatement();
                 int checkRowInsert = statement.executeUpdate(sql);
                 if (checkRowInsert > 0) {
-                    JOptionPane.showMessageDialog(Registration.this, "Success!", "Success Register",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    return true;
+                    Subject_ID subjectIDWindow = new Subject_ID();
+                    subjectIDWindow.setVisible(true);
+                    dispose();
+                    return false;
                 } else{
                     System.out.println("failed");
                     return false;
@@ -380,7 +382,6 @@ public class Registration extends javax.swing.JFrame {
     public boolean isValidInput() {
         try {
             String password = new String(TextFieldNewPass.getPassword());
-            Connection connection = SQLConnection.getConnection1();
             Statement statement = connection.createStatement();
             String sql = "SELECT std_id FROM students";
 
