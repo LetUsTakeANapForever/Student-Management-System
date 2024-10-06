@@ -44,7 +44,7 @@ public class DeleteHomework extends javax.swing.JFrame {
         jLabel_HeadText = new javax.swing.JLabel();
         jButton_Back = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(12, 137, 112));
@@ -101,7 +101,6 @@ public class DeleteHomework extends javax.swing.JFrame {
         jButton_Back.setText("BACK");
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_BackActionPerformed(evt);
             }
         });
 
@@ -123,7 +122,7 @@ public class DeleteHomework extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_Back, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jLabel_HeadText, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel_HeadText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -139,17 +138,13 @@ public class DeleteHomework extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
+        jButton_Back.setVisible(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_HWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_HWActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_HWActionPerformed
-
-    private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//
-        dispose();
-    }
 
     /**
      * @param args the command line arguments

@@ -45,7 +45,7 @@ public class ModifyHomework extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton_Back = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(12, 137, 112));
 
@@ -130,7 +130,6 @@ public class ModifyHomework extends javax.swing.JFrame {
         jButton_Back.setText("BACK");
         jButton_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_BackActionPerformed(evt);
             }
         });
 
@@ -153,7 +152,7 @@ public class ModifyHomework extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_TextHead, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_TextHead, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jButton_Back))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -171,7 +170,7 @@ public class ModifyHomework extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
+        jButton_Back.setVisible(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,8 +183,6 @@ public class ModifyHomework extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_DueActionPerformed
 
     private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-        
-        this.dispose();
     }//GEN-LAST:event_jButton_BackActionPerformed
 
     /**
