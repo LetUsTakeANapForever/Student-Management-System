@@ -14,13 +14,15 @@
  * @author G15
  */
 public class ModifyHomework extends javax.swing.JFrame {
-
+    Homework frame;
+    static Connection connection = SQLConnection.getConnection1();
     /**
      * Creates new form ModifyHomework
      */
-    public ModifyHomework() {
+    public ModifyHomework(Homework frame) {
         initComponents();
         setLocationRelativeTo(null);
+        this.frame = frame;
     }
 
     /**
@@ -189,33 +191,36 @@ public class ModifyHomework extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private void jButton_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
-        if (CheckHomeWorkID(jTextField_HW_ID.getText())) {
-            if (!jTextField_Description.getText().equals(null)||!jTextField_Description.getText().equals("-")) {
+        if (CheckHomeWorkID()) {
+            if ((!jTextField_Description.getText().equals(null))&&jTextField_Due.getText().equals("-")) {
                 ModifyHomeworkDetail(jTextField_Description.getText(),jTextField_HW_ID.getText());
             }
-            if (!jTextField_Due.getText().equals(null)||!jTextField_Due.getText().equals("-")) {
+            else if ((!jTextField_Due.getText().equals(null))&&jTextField_Description.getText().equals("-")) {
                 ModifyHomeworkDue(jTextField_Due.getText(), jTextField_HW_ID.getText());
             }
-            JOptionPane.showMessageDialog(this,"Modify homework success","Success", JOptionPane.INFORMATION_MESSAGE);
+            else{
+                modifyBothHWDueAndDetail(jTextField_Description.getText(), jTextField_Due.getText(), jTextField_HW_ID.getText());
+            }
+            JOptionPane.showMessageDialog(this,"Modified homework successfully","Success", JOptionPane.INFORMATION_MESSAGE);
+
+            new Homework().setVisible(true);
+            frame.dispose();
+            dispose();
         }
-        JOptionPane.showMessageDialog(this, "Wrong homework_id please try again", "Error", JOptionPane.ERROR_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(this, "Wrong homework_id please try again", "Error", JOptionPane.ERROR_MESSAGE);
             
     }//GEN-LAST:event_jButton_BackActionPerformed
 
-    public boolean CheckHomeWorkID(String text){
+    public boolean CheckHomeWorkID(){
         try {
-             Connection connection = SQLConnection.getConnection2();
+             Connection connection = SQLConnection.getConnection1();
              Statement statement = connection.createStatement();
-             String sql= String.format("SELECT homework.homework_id,teachers.teacher_id\n" + //
-                                  "FROM homework JOIN teachers\n" + //
-                                  "ON homework.assigned_by_teacher = teachers.teacher_id\n" + //
-                                  "where teachers.teacher_id = \"%S\"",Login.teacherId);
+             String sql= String.format("SELECT homework_id, assigned_by_teacher FROM homework WHERE homework_id = \"%s\" AND assigned_by_teacher = \"%s\";", jTextField_HW_ID.getText(), Login.teacherId);
              ResultSet resultSet = statement.executeQuery(sql);
-             while (resultSet.next()) {
-                if (text.equals(resultSet.getString("homework_id"))) {
-                    return true;
+                if (resultSet.next()) {
+                   return true;
                 }
-             }
              return false;
          } catch (SQLException e) {
              // TODO Auto-generated catch block
@@ -225,9 +230,8 @@ public class ModifyHomework extends javax.swing.JFrame {
     }
     public void ModifyHomeworkDetail(String detail,String hwID){
         try {
-            Connection connection = SQLConnection.getConnection2();
             Statement statement = connection.createStatement();
-            String sql= String.format("UPDATE homework SET description = \"%S\" WHERE homework_id = \"%S\"",detail,hwID);
+            String sql= String.format("UPDATE homework SET description = \"%s\" WHERE homework_id = \"%s\"",detail,hwID);
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -236,9 +240,19 @@ public class ModifyHomework extends javax.swing.JFrame {
     }
     public void ModifyHomeworkDue(String due,String hwID){
         try {
-            Connection connection = SQLConnection.getConnection2();
             Statement statement = connection.createStatement();
-            String sql= String.format("UPDATE homework SET due_date = \"%S\" WHERE homework_id = \"%S\"",due,hwID);
+            String sql= String.format("UPDATE homework SET due_date = \"%s\" WHERE homework_id = \"%s\"",due,hwID);
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void modifyBothHWDueAndDetail(String detail, String due, String hwID){
+        try {
+            Statement statement = connection.createStatement();
+            String sql= String.format("UPDATE homework SET description = \"%s\", due_date = \"%s\" WHERE homework_id = \"%s\"",detail, due,hwID);
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -272,7 +286,7 @@ public class ModifyHomework extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifyHomework().setVisible(true);
+                // new ModifyHomework().setVisible(true);
             }
         });
     }

@@ -288,7 +288,7 @@
 
 
      private void jButton_ModifyActionPerformed(java.awt.event.ActionEvent evt) {                                               
-         ModifyHomework MHW = new ModifyHomework();
+         ModifyHomework MHW = new ModifyHomework(this);
          MHW.pack();
          MHW.setVisible(true);
          MHW.setLocationRelativeTo(null);
