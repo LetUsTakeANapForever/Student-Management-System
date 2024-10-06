@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+ import java.sql.Connection;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ import java.sql.Statement;
+ import javax.swing.JOptionPane;
+
 /**
  *
  * @author G15
@@ -62,6 +68,11 @@ public class ModifyHomework extends javax.swing.JFrame {
         });
 
         jButton_submit.setText("SUMBMIT");
+        jButton_submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SubmitActionPerformed(evt);
+            }
+        });
 
         jLabel_HW_ID.setText("Homework ID :");
 
@@ -180,6 +191,63 @@ public class ModifyHomework extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private void jButton_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
+        if (CheckHomeWorkID(jTextField_HW_ID.getText())) {
+            if (!jTextField_Description.getText().equals(null)||!jTextField_Description.getText().equals("-")) {
+                ModifyHomeworkDetail(jTextField_Description.getText(),jTextField_HW_ID.getText());
+            }
+            if (!jTextField_Due.getText().equals(null)||!jTextField_Due.getText().equals("-")) {
+                ModifyHomeworkDue(jTextField_Due.getText(), jTextField_HW_ID.getText());
+            }
+            JOptionPane.showMessageDialog(this,"Modify homework success","Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+        JOptionPane.showMessageDialog(this, "Wrong homework_id please try again", "Error", JOptionPane.ERROR_MESSAGE);
+            
+    }//GEN-LAST:event_jButton_BackActionPerformed
+
+    public boolean CheckHomeWorkID(String text){
+        try {
+             Connection connection = SQLConnection.getConnection2();
+             Statement statement = connection.createStatement();
+             String sql= String.format("SELECT homework.homework_id,teachers.teacher_id\n" + //
+                                  "FROM homework JOIN teachers\n" + //
+                                  "ON homework.assigned_by_teacher = teachers.teacher_id\n" + //
+                                  "where teachers.teacher_id = \"%S\"",Login.teacherId);
+             ResultSet resultSet = statement.executeQuery(sql);
+             while (resultSet.next()) {
+                if (text.equals(resultSet.getString("homework_id"))) {
+                    return true;
+                }
+             }
+             return false;
+         } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+             return false;
+         }
+    }
+    public void ModifyHomeworkDetail(String detail,String hwID){
+        try {
+            Connection connection = SQLConnection.getConnection2();
+            Statement statement = connection.createStatement();
+            String sql= String.format("UPDATE homework SET description = \"%S\" WHERE homework_id = \"%S\"",detail,hwID);
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    public void ModifyHomeworkDue(String due,String hwID){
+        try {
+            Connection connection = SQLConnection.getConnection2();
+            Statement statement = connection.createStatement();
+            String sql= String.format("UPDATE homework SET due_date = \"%S\" WHERE homework_id = \"%S\"",due,hwID);
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
