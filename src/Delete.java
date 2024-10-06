@@ -84,7 +84,7 @@ public class Delete extends javax.swing.JFrame {
 
         Head.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Head.setForeground(new java.awt.Color(255, 255, 255));
-        Head.setText("Delete_Subject");
+        Head.setText("WITHDRAW");
 
         Back.setText("BACK");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class Delete extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Head, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
@@ -150,7 +150,7 @@ public class Delete extends javax.swing.JFrame {
                      return;
                  }
                  
-                     String sql = String.format("DELETE FROM registration WHERE std_id = \"%S\" AND subject_id = \"%S\"",LoginStd.std_id,jTextField_Subject_id.getText());
+                     String sql = String.format("DELETE FROM registration WHERE std_id = \"%s\" AND subject_id = \"%s\"",LoginStd.std_id,jTextField_Subject_id.getText());
                      statement.executeUpdate(sql);
                      JOptionPane.showMessageDialog(this,"Drop subject success","Success", JOptionPane.INFORMATION_MESSAGE);
                  
@@ -168,7 +168,7 @@ public class Delete extends javax.swing.JFrame {
              String sql = String.format("SELECT all_subjects.subject_id,registration.std_id\r\n" + //
                                  "FROM all_subjects JOIN registration \r\n" + //
                                  "ON registration.subject_id = all_subjects.subject_id\r\n" + //
-                                 "WHERE registration.std_id = \"%S\"",LoginStd.std_id);
+                                 "WHERE registration.std_id = \"%s\"",LoginStd.std_id);
              ResultSet resultSet = statement.executeQuery(sql);
              while (resultSet.next()) {
                  if (text.equals(resultSet.getString("subject_id"))) {

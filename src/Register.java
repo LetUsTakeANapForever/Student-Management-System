@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author G15
@@ -42,122 +47,122 @@ public class Register extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 533));
+        CheckSubjectInfo();
+        // jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        //     new Object [][] {
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null},
+        //         {null, null}
+        //     },
+        //     new String [] {
+        //         "SUBJECT_ID", "SUBJECT_NAME"
+        //     }
+        // ) {
+        //     boolean[] canEdit = new boolean [] {
+        //         false, false
+        //     };
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "SUBJECT_ID", "SUBJECT_NAME"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        //     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        //         return canEdit [columnIndex];
+        //     }
+        // });
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
@@ -190,7 +195,7 @@ public class Register extends javax.swing.JFrame {
         Add.setBackground(new java.awt.Color(0, 102, 102));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("DELETE_SUBJECT");
+        Add.setText("WITHDRAW");
         Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddActionPerformed(evt);
@@ -200,7 +205,7 @@ public class Register extends javax.swing.JFrame {
         jButton_Add.setBackground(new java.awt.Color(0, 102, 102));
         jButton_Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton_Add.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Add.setText("ADD_SUBJECT");
+        jButton_Add.setText("ENROLL");
         jButton_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_AddActionPerformed(evt);
@@ -273,6 +278,33 @@ public class Register extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void CheckSubjectInfo(){
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"Subject_id", "Subject_Name",}, 0
+        );
+        try{
+        Connection connection = SQLConnection.getConnection2();
+        Statement statement = connection.createStatement();
+        String sql = String.format("SELECT all_subjects.subject_id,all_subjects.subject_name,registration.std_id\r\n" + //
+                         "FROM all_subjects JOIN registration \r\n" + //
+                         "ON registration.subject_id = all_subjects.subject_id\r\n" + //
+                         "WHERE registration.std_id = \"%s\" ",LoginStd.std_id);
+
+        ResultSet resultSet = statement.executeQuery(sql);
+        while(resultSet.next()) {
+            String Subject_id = resultSet.getString("subject_id");
+            String Subject_Name = resultSet.getString("subject_name");
+
+            model.addRow(new Object[]{Subject_id,Subject_Name});
+        }
+            jTable1.setModel(model);
+            jTable1.getTableHeader().setReorderingAllowed(false);
+
+    }catch(Exception e){
+        System.out.println(e);
+    }
+}
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

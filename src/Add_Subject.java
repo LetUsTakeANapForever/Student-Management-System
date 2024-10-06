@@ -93,7 +93,7 @@
  
          jLabel_Add_Subject.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
          jLabel_Add_Subject.setForeground(new java.awt.Color(255, 255, 255));
-         jLabel_Add_Subject.setText("Add_Subject");
+         jLabel_Add_Subject.setText("ENROLL");
  
          jButton_Back.setText("BACK");
          jButton_Back.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@
                      return;
                  }
                      String sql = String.format("INSERT INTO registration (std_id,subject_id,grade)\r\n" + //
-                                                 "Values (\"%S\",\"%S\",null)",LoginStd.std_id,jTextField1.getText());
+                                                 "Values (\"%s\",\"%s\",null)",LoginStd.std_id,jTextField1.getText());
                      statement.executeUpdate(sql);
                      JOptionPane.showMessageDialog(this,"Register subject success","Success", JOptionPane.INFORMATION_MESSAGE);
                  
@@ -181,7 +181,7 @@
              String sql = String.format("SELECT all_subjects.subject_id,registration.std_id\r\n" + //
                                  "FROM all_subjects JOIN registration \r\n" + //
                                  "ON registration.subject_id = all_subjects.subject_id\r\n" + //
-                                 "WHERE registration.std_id = \"%S\"",LoginStd.std_id);
+                                 "WHERE registration.std_id = \"%s\"",LoginStd.std_id);
              ResultSet resultSet = statement.executeQuery(sql);
              while (resultSet.next()) {
                  if (text.equals(resultSet.getString("subject_id"))) {
