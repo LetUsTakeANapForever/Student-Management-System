@@ -15,7 +15,6 @@
   * @author G15
   */
  public class Homework extends javax.swing.JFrame {
- 
      /**
       * Creates new form Homework
       */
@@ -296,7 +295,7 @@
     }                                              
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {                                               
-         DeleteHomework DHW = new DeleteHomework();
+         DeleteHomework DHW = new DeleteHomework(this);
          DHW.pack();
          DHW.setVisible(true);
          DHW.setLocationRelativeTo(null);
