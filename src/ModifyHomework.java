@@ -15,7 +15,7 @@
  */
 public class ModifyHomework extends javax.swing.JFrame {
     Homework frame;
-    static Connection connection = SQLConnection.getConnection1();
+    static Connection connection = SQLConnection.getConnection2();
     /**
      * Creates new form ModifyHomework
      */
@@ -214,7 +214,7 @@ public class ModifyHomework extends javax.swing.JFrame {
 
     public boolean CheckHomeWorkID(){
         try {
-             Connection connection = SQLConnection.getConnection1();
+             Connection connection = SQLConnection.getConnection2();
              Statement statement = connection.createStatement();
              String sql= String.format("SELECT homework_id, assigned_by_teacher FROM homework WHERE homework_id = \"%s\" AND assigned_by_teacher = \"%s\";", jTextField_HW_ID.getText(), Login.teacherId);
              ResultSet resultSet = statement.executeQuery(sql);

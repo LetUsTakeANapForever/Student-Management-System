@@ -8,7 +8,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Registration extends javax.swing.JFrame {
-    static Connection connection = SQLConnection.getConnection1();
+    static Connection connection = SQLConnection.getConnection2();
     static String teacherID;
 
     public Registration() {

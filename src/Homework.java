@@ -311,7 +311,7 @@
          try{
          Connection connection = SQLConnection.getConnection2();
          Statement statement = connection.createStatement();
-         String sql = String.format("SELECT homework_id, homework.assigned_date,all_subjects.subject_name,homework.description,homework.due_date, homework.assigned_to_std FROM homework JOIN teachers ON teachers.teacher_id = homework.assigned_by_teacher JOIN all_subjects ON all_subjects.subject_id = homework.subject_id WHERE homework.assigned_by_teacher = \"%S\"",Login.teacherId);
+         String sql = String.format("SELECT homework_id, homework.assigned_date,all_subjects.subject_name,homework.description,homework.due_date, homework.assigned_to_std FROM homework JOIN teachers ON teachers.teacher_id = homework.assigned_by_teacher JOIN all_subjects ON all_subjects.subject_id = homework.subject_id WHERE homework.assigned_by_teacher = \"%s\"",Login.teacherId);
  
          ResultSet resultSet = statement.executeQuery(sql);
          while(resultSet.next()) {

@@ -357,17 +357,20 @@ public class LoginStd extends javax.swing.JFrame {
         });
     }
     public boolean checkAccount(String id,String password){
-        try{
+        if (id.charAt(0)=='b') {
+            try{
             Connection connection = SQLConnection.getConnection2();
             Statement statement = connection.createStatement();
             String sql = String.format("SELECT std_id,std_password FROM students WHERE std_id=\"%s\" AND std_password=\"%s\"",id,password);
-
             ResultSet resultset = statement.executeQuery(sql);
             return resultset.next();
         }catch(Exception e){
             System.out.println(e);
             return false;
         }
+        }
+        return false;
+        
     }
      public String getUserInfo(String ID){
         try{

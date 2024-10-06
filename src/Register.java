@@ -195,7 +195,7 @@ public class Register extends javax.swing.JFrame {
         Add.setBackground(new java.awt.Color(0, 102, 102));
         Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("DELETE_SUBJECT");
+        Add.setText("WITHDRAW");
         Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddActionPerformed(evt);
@@ -205,7 +205,7 @@ public class Register extends javax.swing.JFrame {
         jButton_Add.setBackground(new java.awt.Color(0, 102, 102));
         jButton_Add.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton_Add.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Add.setText("ADD_SUBJECT");
+        jButton_Add.setText("ENROLL");
         jButton_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_AddActionPerformed(evt);
@@ -288,7 +288,7 @@ public class Register extends javax.swing.JFrame {
         String sql = String.format("SELECT all_subjects.subject_id,all_subjects.subject_name,registration.std_id\r\n" + //
                          "FROM all_subjects JOIN registration \r\n" + //
                          "ON registration.subject_id = all_subjects.subject_id\r\n" + //
-                         "WHERE registration.std_id = \"%S\" ",LoginStd.std_id);
+                         "WHERE registration.std_id = \"%s\" ",LoginStd.std_id);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {

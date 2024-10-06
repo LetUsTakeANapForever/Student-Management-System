@@ -1,13 +1,15 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Subject_ID extends javax.swing.JFrame {
-    static Connection connection = SQLConnection.getConnection1();
+    static Connection connection = SQLConnection.getConnection2();
     
     /**
      * Creates new form Subject_ID
@@ -33,7 +35,7 @@ public class Subject_ID extends javax.swing.JFrame {
         jButton_Submit = new javax.swing.JButton();
         jLabelSubject = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel_Subject_Name = new javax.swing.JLabel();
+        JLabel jLabel_Subject_Name = new javax.swing.JLabel();
         jTextField_SJ_Name = new javax.swing.JTextField();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,11 +53,19 @@ public class Subject_ID extends javax.swing.JFrame {
         
         jButton_Submit.addActionListener(evt -> {
             try{
-                Statement statement = connection.createStatement();
-                statement.executeUpdate(String.format("UPDATE teachers SET subject_id = \"%s\" WHERE teacher_ID = \"%s\"", jTextField_Subject.getText(), Registration.teacherID));
-                JOptionPane.showMessageDialog(this, "Success!", "Success Register", JOptionPane.INFORMATION_MESSAGE);
-                new Login().setVisible(true);
-                dispose();
+                if (!isSubjectSame()) {
+                    Statement statement = connection.createStatement();
+                    String insertSubject = String.format("INSERT INTO all_subjects VALUES (\"%s\", \"%s\", \"%s\");", jTextField_Subject.getText(), jTextField_SJ_Name.getText(), Registration.teacherID);
+                    statement.executeUpdate(insertSubject);
+
+                    statement.executeUpdate(String.format("UPDATE teachers SET subject_id = \"%s\" WHERE teacher_ID = \"%s\"", jTextField_Subject.getText(), Registration.teacherID));
+                    JOptionPane.showMessageDialog(this, "Success!", "Success Register", JOptionPane.INFORMATION_MESSAGE);
+                    new Login().setVisible(true);
+                    dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(this, "This subject already has a teacher or wrong subject_id,subject_name", "Error", JOptionPane.ERROR_MESSAGE);
+                
             }catch (SQLException e){
                 e.printStackTrace();
             }
@@ -69,7 +79,7 @@ public class Subject_ID extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelAddSub)
-                    .addComponent(jLabel_Subject_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_Subject_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_Submit)
@@ -181,6 +191,22 @@ public class Subject_ID extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField_Subject;
     private javax.swing.JTextField jTextField_SJ_Name;
-    private javax.swing.JTextField jTextField_Subject;
-    // End of variables declaration                   
+    // End of variables declaration
+    public boolean isSubjectSame(){
+        try {
+            Connection connection = SQLConnection.getConnection2();
+            Statement statement = connection.createStatement();
+            String sql = String.format("SELECT subject_id FROM teachers WHERE subject_id = \"%s\"",jTextField_Subject.getText());
+            ResultSet rs = statement.executeQuery(sql);
+            if (!rs.next()) {
+                return false;
+            }
+            return true;
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return true;
+    }
+                    
 }
