@@ -47,7 +47,7 @@ public class Registration extends javax.swing.JFrame {
         Topblock.setPreferredSize(new java.awt.Dimension(369, 62));
 
         BackBT.setBackground(new java.awt.Color(0, 102, 102));
-        BackBT.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        BackBT.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         BackBT.setForeground(new java.awt.Color(255, 255, 255));
         BackBT.setText("BACK");
         BackBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
