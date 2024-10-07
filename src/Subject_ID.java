@@ -108,6 +108,10 @@ public class Subject_ID extends javax.swing.JFrame {
         jLabelSubject.setText("ADD SUBJECT ID");
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(e -> {
+            new Registration().setVisible(true);
+            dispose();
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
